@@ -1,0 +1,18 @@
+
+.nav {
+  background-color: black;
+  opacity: 0.65;
+  color: white;
+
+  box-sizing: border-box;
+  height: 48px;
+  width: 100%;
+  padding: 0 160px;
+
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

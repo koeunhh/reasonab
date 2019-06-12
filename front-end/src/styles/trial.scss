@@ -1,0 +1,31 @@
+
+.trial {
+  display: flex;
+  flex-direction: column;
+
+  &__form {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+
+    .input {
+      height: 30px;
+      margin-top: 6px;
+      border: solid 0.5px grey;
+      border-radius: 5px;
+    
+      &#message {
+        height: 100px;
+      } 
+    }
+
+    button {
+      height: 30px;
+      color: white;
+      background-color: grey;
+      border: solid 1px grey;
+      border-radius: 5px;
+    }
+  }
+}
