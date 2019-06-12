@@ -5,10 +5,13 @@ html {
   .App {
     font-size: 1.6rem;
   
+    .hide{
+      display: none;
+    }
+    
     .content {
       position: relative;
       top: 48px;
-      margin: 5rem 10rem;
     }
   } 
 }
