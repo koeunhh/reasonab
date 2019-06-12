@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 
-// import '../styles/trial.scss';
+// import '../styles/programDetail.scss';
 
-export default class Trial extends Component {
+export default class ProgramDetail extends Component {
   render(){
     const { eng, kor } = this.props;
     
     return(
-      <div className='trial'>
-        <h1 className={eng}>Trial</h1>
-        <h1 className={kor}>포트폴리오 리뷰</h1>
+      <div className='programDetail'>
+        <h1 className={eng}>Program Detail</h1>
+        <h1 className={kor}>프로그램</h1>
         <p className={eng}>
           Labore qui do adipisicing ullamco est est nisi veniam ad deserunt reprehenderit excepteur ad. 
           Culpa aliquip mollit pariatur dolor elit esse ut proident adipisicing. 
