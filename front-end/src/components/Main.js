@@ -9,9 +9,9 @@ export default class Main extends Component {
     const { eng, kor } = this.props;
     return(
       <div className='main'>
-        <About eng={eng} kor={kor}/>
-        <Program eng={eng} kor={kor}/>
-        <Trial eng={eng} kor={kor} />
+        <About {...this.props} eng={eng} kor={kor}/>
+        <Program {...this.props} eng={eng} kor={kor}/>
+        <Trial {...this.props} eng={eng} kor={kor} />
       </div>
     )
   }

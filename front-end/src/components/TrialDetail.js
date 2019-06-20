@@ -49,13 +49,13 @@ export default class TrialDetail extends Component{
         <h1 className='trialDetail__title'>Free Trial</h1>
         <form onSubmit={this.formSubmit} className='trialDetail__form'>
           <label>Full Name</label>
-          <input className='input' type='text' name='name' required/><br/>
+          <input className='input' type='text' name='name' required/>
           <label>Email</label>
-          <input className='input' type='email' name='email' required/><br/>
+          <input className='input' type='email' name='email' required/>
           <label>File</label>
-          <input type="file" name="userfile" onChange={this.uploadFile}/><br/>
+          <input className='input' id='file' type="file" name="userfile" onChange={this.uploadFile}/>
           <label>Message</label>
-          <textarea className='input' id='message' name='message' required></textarea><br/>
+          <textarea className='input' id='message' name='message' required></textarea>
           <button type='submit' name='submit'>Send</button>
         </form>
       </div>

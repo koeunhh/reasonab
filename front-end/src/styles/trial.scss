@@ -1,12 +1,12 @@
 @import './global.scss';
 
-.program {
-  padding: 3.2rem; 
-  
+.trial {
+  padding: 3.2rem;  
+
   .show {
     display: flex;
     flex-direction: column;
-  
+
     button {
       @include detailButton;
     }

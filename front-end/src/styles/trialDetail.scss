@@ -1,31 +1,39 @@
 
 .trialDetail {
-  padding: 3.2rem;
+  box-sizing: border-box;
+  padding: 4.8rem 3.2rem;
   display: flex;
   flex-direction: column;
 
+  &__title {
+    margin: 0 0 20px 0;
+  }
+
   &__form {
-    align-self: center;
     display: flex;
     flex-direction: column;
 
     .input {
-      height: 30px;
-      margin-top: 6px;
-      border: solid 0.5px grey;
-      border-radius: 5px;
-    
+      margin: 6px 0 12px 0;
+      
+      &:not(#file) {
+        height: 30px;
+        border: solid 0.5px grey;
+        border-radius: 5px;
+      }
+
       &#message {
+        margin-top: 8px;
         height: 100px;
       } 
     }
+  }
 
-    button {
-      height: 30px;
-      color: white;
-      background-color: grey;
-      border: solid 1px grey;
-      border-radius: 5px;
-    }
+  button {
+    height: 30px;
+    color: white;
+    background-color: grey;
+    border: solid 1px grey;
+    border-radius: 5px;
   }
 }

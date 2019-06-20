@@ -91,21 +91,21 @@ export default class App extends Component {
                   kor={kor}
                   menuOpen={menuOpen} 
                   clickMenu={this.clickMenu}/>
-            <Route path='/' exact render={(routeProps) => (
-              <Main {...routeProps}
+            <Route path='/' exact render={(props) => (
+              <Main {...props}
                     eng={eng} 
                     kor={kor} 
                     switchLanguage={this.switchLanguage}/>
             )} />
 
-            <Route path='/about' render={(routeProps) => (
-              <AboutDetail {...routeProps} eng={eng} kor={kor}/>
+            <Route path='/about' render={(props) => (
+              <AboutDetail {...props} eng={eng} kor={kor}/>
             )}/>
-            <Route path='/program' render={(routeProps) => (
-              <ProgramDetail {...routeProps} eng={eng} kor={kor}/>
+            <Route path='/program' render={(props) => (
+              <ProgramDetail {...props} eng={eng} kor={kor}/>
             )}/>
-            <Route path='/trial' render={(routeProps) => (
-              <TrialDetail {...routeProps} eng={eng} kor={kor}/>
+            <Route path='/trial' render={(props) => (
+              <TrialDetail {...props} eng={eng} kor={kor}/>
             )}/>
           </div>
         </div>
