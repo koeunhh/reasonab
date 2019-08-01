@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-// import '../styles/programDetail.scss';
+import '../styles/programDetail.scss';
 
 export default class ProgramDetail extends Component {
   render(){

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 
 import Nav from './components/Nav';
 import Menu from './components/Menu';
@@ -9,20 +9,6 @@ import ProgramDetail from './components/ProgramDetail';
 import TrialDetail from './components/TrialDetail';
 
 import './styles/app.scss';
-
-// function App() {
-//   return (
-//       <div className="App">
-//         <Nav/>
-//         <div className='content'>
-//           <Main/>
-//         </div>
-//       </div>
-//   );
-// }
-
-// export default App;
-
 export default class App extends Component {
   constructor(props){
     super(props);
@@ -50,7 +36,6 @@ export default class App extends Component {
         kor: 'hide',
       })
     }
-    return <Redirect to='/program'/>
   }
 
   clickMenu = () => {
@@ -91,22 +76,24 @@ export default class App extends Component {
                   kor={kor}
                   menuOpen={menuOpen} 
                   clickMenu={this.clickMenu}/>
-            <Route path='/' exact render={(props) => (
-              <Main {...props}
-                    eng={eng} 
-                    kor={kor} 
-                    switchLanguage={this.switchLanguage}/>
-            )} />
 
-            <Route path='/about' render={(props) => (
-              <AboutDetail {...props} eng={eng} kor={kor}/>
-            )}/>
-            <Route path='/program' render={(props) => (
-              <ProgramDetail {...props} eng={eng} kor={kor}/>
-            )}/>
-            <Route path='/trial' render={(props) => (
-              <TrialDetail {...props} eng={eng} kor={kor}/>
-            )}/>
+            <Switch>
+              <Route path='/' exact render={(props) => (
+                <Main {...props}
+                      eng={eng} 
+                      kor={kor} 
+                      switchLanguage={this.switchLanguage}/>
+              )} />
+              <Route path='/about' render={(props) => (
+                <AboutDetail {...props} eng={eng} kor={kor}/>
+              )}/>
+              <Route path='/program' render={(props) => (
+                <ProgramDetail {...props} eng={eng} kor={kor}/>
+              )}/>
+              <Route path='/trial' render={(props) => (
+                <TrialDetail {...props} eng={eng} kor={kor}/>
+              )}/>
+            </Switch>
           </div>
         </div>
       </Router>

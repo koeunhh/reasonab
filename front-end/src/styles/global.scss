@@ -1,10 +1,40 @@
 
+@import '/assets/fonts/stylesheet.css';
+
 @mixin detailButton {
-  background-color: white;
+  background-color: black;
+  color: white;
   height: 40px;
   width: 120px;
-  border-radius: 15px;
-  border: 1px solid black;
-  box-shadow: 3px 3px 5px gray;
+  border-radius: 20px;
+  border: 1px solid white;
   align-self: center;
+}
+
+button {
+  background-color: black;
+  color: white;
+  height: 30px;
+  width: 120px;
+  border-radius: 20px;
+  border: 1px solid white;
+  align-self: center;
+  font-size: 12px;
+}
+
+@mixin pagePadding {
+  padding: 3.2rem;
+}
+
+.App {
+  font-family: 'Gotham';
+}
+
+.content {
+  background-color: black;
+  color: white;
+
+  h1 {
+    margin: 0;
+  }
 }

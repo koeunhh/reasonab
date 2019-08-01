@@ -1,8 +1,8 @@
 @import './global.scss';
 
 .trial {
-  padding: 3.2rem;  
-
+  @include pagePadding;
+  
   .show {
     display: flex;
     flex-direction: column;

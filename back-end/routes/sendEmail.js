@@ -18,6 +18,7 @@ let transporter = nodemailer.createTransport({
 
 router.post('/trial', upload.single('userfile'), (req, res, next) => {
   var name = req.body.name;
+  var phone = req.body.phone;
   var email = req.body.email;
   var message = req.body.message;
 
@@ -27,7 +28,7 @@ router.post('/trial', upload.single('userfile'), (req, res, next) => {
     sender: email,
     replyTo: email,
     subject: "RDA Free Trial Submission",
-    text: `message sent from: ${name} <${email}> \n\n ${message}`,
+    text: `message sent from: ${name} <${email}> \n phone number: ${phone} \n\n ${message}`,
     attachments: [{
         filename: req.file.originalname,
         path: req.file.path

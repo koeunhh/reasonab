@@ -8,9 +8,10 @@ export default class TrialDetail extends Component{
   constructor(props) {
     super(props);
     this.state ={
+        formDisplay: 'none',
         file: null,
-        tab: 0,
-        numOfTabs: 4
+        tab: 1,
+        numOfTabs: 3
     };
     this.major = React.createRef();
   }
@@ -20,6 +21,7 @@ export default class TrialDetail extends Component{
 
     const formData = new FormData();
     formData.append('name', e.target.name.value);
+    formData.append('phone', e.target.phone.value);
     formData.append('email', e.target.email.value);
     formData.append('message', e.target.message.value);
     formData.append('userfile', this.state.file);
@@ -54,12 +56,19 @@ export default class TrialDetail extends Component{
     this.showTab();
   }
 
+  // showForm = () => {
+  //   const form = this.refs['trialForm'];
+  //   const btn = this.refs['formBtn'];
+  //   form.style.display = 'flex';
+  //   btn.parentNode.removeChild(btn);
+  // }
+
   showTab = () => {
     const { tab, numOfTabs} = this.state;
     var currentTab = this.refs[`tab${this.state.tab}`];
-    currentTab.style.display = 'block';
+    currentTab.style.display = 'flex';
     var { prevBtn, nextBtn } = this.refs;
-    if(tab === 0){
+    if(tab === 1){
       prevBtn.style.display = 'none';
     }
     else {
@@ -119,10 +128,15 @@ export default class TrialDetail extends Component{
   }
 
   render(){
+
     return(
       <div className='trialDetail'>
-        <h1 className='trialDetail__title'>Free Trial</h1>
-        <form onSubmit={this.formSubmit} className='trialDetail__form'>
+        <h3 className='trialDetail__title'>Get free feedback</h3>
+        <h4 className='trialDetail__description'>Free for first visitors only</h4>
+        <h4 className='trialDetail__description'>Up to 3 art pieces</h4>
+        <h4 className='trialDetail__description' id='price'>(Original price is $250/per piece)</h4>
+        {/* <button className='trialDetail__btn' onClick={this.showForm} ref='formBtn'>Free Trial</button> */}
+        <form onSubmit={this.formSubmit} className='trialDetail__form' ref='trialForm'>
           <div className='tab' ref='tab0'>
             <label>Major</label>
             <input type='button' value='Ui/Ux' onClick={this.selectMajor}/>
@@ -131,17 +145,21 @@ export default class TrialDetail extends Component{
           </div>
           <div className='tab' ref='tab1'>
             <label>Full Name</label>  
-            <input className='input' type='text' name='name'/>  
-          </div>
-          <div className='tab' ref='tab2'>
+            <input className='input' type='text' name='name'/> 
+            <label>Phone Number</label>
+            <input className='input' type='phone' name='phone'/>
             <label>Email</label>
-            <input className='input' type='email' name='email'/>            
+            <input className='input' type='email' name='email'/>
+            <img src='assets/images/studentwork1.png' alt='studentwork1'/> 
           </div>
-          <div className='tab' ref='tab3'>
+          {/* <div className='tab' ref='tab2'>
+                       
+          </div> */}
+          <div className='tab' ref='tab2'>
             <label>File</label>
             <input className='input' id='file' type="file" name="userfile" onChange={this.uploadFile}/>
           </div>
-          <div className='tab' ref='tab4'>
+          <div className='tab' ref='tab3'>
             <label>Message</label>
             <textarea className='input' id='message' name='message'></textarea>
           </div>
