@@ -86,6 +86,7 @@ export default class TrialDetail extends Component{
     const {tab} = this.state;
     var currentTab = this.refs[`tab${tab}`];
     if(this.validateForm(currentTab)){
+      this.resetFormColor();      
       currentTab.style.display = 'none';
       if(tab === this.state.numOfTabs){
         this.refs.nextBtn.type = 'submit';
@@ -112,13 +113,57 @@ export default class TrialDetail extends Component{
   }
 
   validateForm = (current) => {
-    var myInput = current.getElementsByClassName('input')[0].value;
-    if(myInput === ''){
-      alert('invalid input');
-      return false;
+    let inputs = current.getElementsByTagName('input');
+    let validInput = true;
+    for(let i = 0; i < inputs.length; i++){
+      let myInput = inputs[i].value;
+      if(myInput === ''){
+        this.changeFormColor();
+        inputs[i].placeholder = 'THIS FIELD IS REQUIRED';
+        // inputs[i].style.backgroundColor = '#F6F6F6';
+        // inputs[i].style.border = '1px solid #707070';
+        validInput = false;
+      }
     }
-    else{
-      return true;
+    return validInput;
+  }
+
+  changeFormColor = () => {
+    const trialDetail = document.querySelector('.trialDetail');
+    trialDetail.style.backgroundColor = 'white';
+    trialDetail.style.color = '#797979';
+    var currentTab = this.refs[`tab${this.state.tab}`];
+    const formInput = currentTab.querySelectorAll('.input');
+    for(let i = 0; i < formInput.length; i++){
+      formInput[i].style.backgroundColor = 'white';
+      formInput[i].style.color = '#797979';
+      formInput[i].style.border = '1px solid #ABABAB';
+    }
+    const btn = trialDetail.querySelectorAll('button');
+    for(let i = 0; i < btn.length; i++){
+      btn[i].style.color = '#707070';
+      btn[i].style.borderColor = '#707070';
+      btn[i].style.backgroundColor = 'white';
+    }
+  }
+
+  resetFormColor = () => {
+    const trialDetail = document.querySelector('.trialDetail');
+    trialDetail.style.backgroundColor = 'black';
+    trialDetail.style.color = 'white';
+    var currentTab = this.refs[`tab${this.state.tab}`];
+    const formInput = currentTab.querySelectorAll('.input');
+    for(let i = 0; i < formInput.length; i++){
+      formInput[i].style.backgroundColor = 'black';
+      formInput[i].style.color = '#797979';
+      formInput[i].style.border = 'solid 1px #797979';
+      formInput[i].placeholder = '';
+    }
+    const btn = trialDetail.querySelectorAll('button');
+    for(let i = 0; i < btn.length; i++){
+      btn[i].style.color = 'white';
+      btn[i].style.borderColor = 'white';
+      btn[i].style.backgroundColor = 'black';
     }
   }
 
@@ -137,29 +182,30 @@ export default class TrialDetail extends Component{
         <h4 className='trialDetail__description' id='price'>(Original price is $250/per piece)</h4>
         {/* <button className='trialDetail__btn' onClick={this.showForm} ref='formBtn'>Free Trial</button> */}
         <form onSubmit={this.formSubmit} className='trialDetail__form' ref='trialForm'>
-          <div className='tab' ref='tab0'>
+          <div className='trialDetail__form--tab' ref='tab0'>
             <label>Major</label>
             <input type='button' value='Ui/Ux' onClick={this.selectMajor}/>
             <input type='button' value='Interior Design' onClick={this.selectMajor}/>
             <input type='button' value='Animation' onClick={this.selectMajor}/>
           </div>
-          <div className='tab' ref='tab1'>
-            <label>Full Name</label>  
+          <div className='trialDetail__form--tab' ref='tab1'>
+            <label>Your Name</label>  
             <input className='input' type='text' name='name'/> 
             <label>Phone Number</label>
             <input className='input' type='phone' name='phone'/>
             <label>Email</label>
             <input className='input' type='email' name='email'/>
             <img src='assets/images/studentwork1.png' alt='studentwork1'/> 
+            <h4 className='quote'>You are not alone. We are here to help you get into your dream school.</h4>
           </div>
-          {/* <div className='tab' ref='tab2'>
+          {/* <div className='trialDetail__form--tab' ref='tab2'>
                        
           </div> */}
-          <div className='tab' ref='tab2'>
+          <div className='trialDetail__form--tab' ref='tab2'>
             <label>File</label>
             <input className='input' id='file' type="file" name="userfile" onChange={this.uploadFile}/>
           </div>
-          <div className='tab' ref='tab3'>
+          <div className='trialDetail__form--tab' ref='tab3'>
             <label>Message</label>
             <textarea className='input' id='message' name='message'></textarea>
           </div>

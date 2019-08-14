@@ -27,7 +27,8 @@ button {
 }
 
 .App {
-  font-family: 'Gotham';
+  // font-family: 'Gotham';
+  font-family: 'GothamMedium';
 }
 
 .content {
@@ -36,5 +37,11 @@ button {
 
   h1 {
     margin: 0;
+  }
+
+  h4 {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 18px;
   }
 }
