@@ -13,7 +13,7 @@ export default class About extends Component {
 
     return(
       <div className='about'>
-        <img src='assets/icons/logo_big.png' alt='logo'/>
+        <img src='assets/icons/mainlogo-white.svg' alt='logo'/>
         <div className={eng}>
           <h1>About RDA</h1>
           <p>

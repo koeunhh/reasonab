@@ -10,10 +10,11 @@ export default class Main extends Component {
 
     var menu;
     if(menuOpen){
-      menu = 'menu'
+      menu = 'menu';
     }
     else{
-      menu = 'closed'
+      menu = 'closed';
+      
     }
 
     return(

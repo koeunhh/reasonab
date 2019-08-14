@@ -9,21 +9,23 @@ export default class Nav extends Component{
 
     var menuImg;
     if(menuOpen){
-      menuImg = '/assets/icons/x.svg';
+      menuImg = 'assets/icons/x-white.svg';
     }
     else{
-      menuImg = '/assets/icons/menu.svg';
+      menuImg = 'assets/icons/menu-white.svg';
+      const nav = document.querySelector('.nav');
+      console.log(nav);
     }
 
     return(
-      <div className='nav'>
-        <img onClick={clickMenu} src={menuImg} alt='menu'/>
-        <Link to='/'><img onClick={closeMenu} src='/assets/icons/logo.svg' alt='logo'/></Link>
-        <h3 onClick={switchLanguage}>
-          <div className={eng}>한글</div>
-          <div className={kor}>ENG</div>
-        </h3>
-      </div>
+      <nav className='nav'>
+        <img className='nav__menu' onClick={clickMenu} src={menuImg} alt='menu'/>
+        <Link to='/'><img className='nav__logo' onClick={closeMenu} src='assets/icons/logo-white.svg' alt='logo'/></Link>
+        <h4 onClick={switchLanguage}>
+          <div className={`${eng} nav__lang`}>한글</div>
+          <div className={`${kor} nav__lang`}>ENG</div>
+        </h4>
+      </nav>
     )
   }
 }

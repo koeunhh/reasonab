@@ -23,7 +23,6 @@
     &#price {
       font-family: 'Gotham';
       font-size: 10px;
-      font-weight: 300;
     }
   }
 
@@ -91,15 +90,21 @@
         margin: 80px 0 30px;
       }
     }
-  }
 
-  button {
-    align-self: center;
+    &--buttons{
+      display: flex;
 
-    &.prevBtn {
-      display: none;
+      button {  
+        width: 100px;
+        margin: 0 10px;
+  
+        &.prevBtn {
+          display: none;
+        }
+      }
     }
   }
+
 
   &__success {
     display: none;

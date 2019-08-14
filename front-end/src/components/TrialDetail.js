@@ -107,6 +107,7 @@ export default class TrialDetail extends Component{
   prevTab = () => {
     const {tab} = this.state;
     var currentTab = this.refs[`tab${tab}`];
+    this.resetFormColor(); 
     currentTab.style.display = 'none';
     this.refs.nextBtn.type = 'button';
     this.setState({tab: tab - 1});
@@ -204,13 +205,21 @@ export default class TrialDetail extends Component{
           <div className='trialDetail__form--tab' ref='tab2'>
             <label>File</label>
             <input className='input' id='file' type="file" name="userfile" onChange={this.uploadFile}/>
+            <label>Title</label>  
+            <input className='input' type='text' name='title'/> 
+            <label>Medium</label>  
+            <input className='input' type='text' name='medium'/>
+            <label>Short Statement</label>  
+            <input className='input' type='text' name='statement'/>  
           </div>
           <div className='trialDetail__form--tab' ref='tab3'>
             <label>Message</label>
             <textarea className='input' id='message' name='message'></textarea>
           </div>
-          <button type='button' className='prevBtn' ref='prevBtn' onClick={this.prevTab}>Previous</button>
-          <button type='button' className='nextBtn' ref='nextBtn' onClick={this.nextTab}>Next</button>            
+          <div className='trialDetail__form--buttons'>
+            <button type='button' className='prevBtn' ref='prevBtn' onClick={this.prevTab}>Previous</button>
+            <button type='button' className='nextBtn' ref='nextBtn' onClick={this.nextTab}>Next</button>            
+          </div>
         </form>
         <h3 className='trialDetail__success'>Form submitted!</h3>
       </div>
