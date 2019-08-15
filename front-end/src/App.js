@@ -4,7 +4,8 @@ import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-d
 import Nav from './components/Nav';
 import Menu from './components/Menu';
 import Main from './components/Main';
-import AboutDetail from './components/AboutDetail';
+import AboutDetailEng from './components/AboutDetailEng';
+import AboutDetailKor from './components/AboutDetailKor';
 import ProgramDetail from './components/ProgramDetail';
 import TrialDetail from './components/TrialDetail';
 
@@ -13,8 +14,9 @@ export default class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      eng: 'show',
-      kor: 'hide',
+      // eng: 'show',
+      // kor: 'hide',
+      lang: 'eng',
       menuOpen: false
     }
   }
@@ -23,31 +25,19 @@ export default class App extends Component {
     window.scrollTo(0, 0)
   }
 
-  switchLanguage = () => {
-    if(this.state.eng === 'show'){
-      this.setState({
-        eng: 'hide',
-        kor: 'show'
-      });
-    }
-    else if(this.state.eng === 'hide'){
-      this.setState({
-        eng: 'show',
-        kor: 'hide',
-      })
-    }
-  }
-
   clickMenu = () => {
+    const nav = document.querySelector('nav');
     if(this.state.menuOpen){
       this.setState({
         menuOpen: false
       })
+      nav.style.opacity = 0.85;
     }
     else{
       this.setState({
         menuOpen: true
       })
+      nav.style.opacity = 1;
     }
   }
 
@@ -84,8 +74,11 @@ export default class App extends Component {
                       kor={kor} 
                       switchLanguage={this.switchLanguage}/>
               )} />
-              <Route path='/about' render={(props) => (
-                <AboutDetail {...props} eng={eng} kor={kor}/>
+              <Route path='/en/about' render={(props) => (
+                <AboutDetailEng {...props} eng={eng} kor={kor}/>
+              )}/>
+               <Route path='/kor/about' render={(props) => (
+                <AboutDetailKor {...props} eng={eng} kor={kor}/>
               )}/>
               <Route path='/program' render={(props) => (
                 <ProgramDetail {...props} eng={eng} kor={kor}/>
