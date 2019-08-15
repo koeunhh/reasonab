@@ -5,19 +5,15 @@ import '../styles/nav.scss';
 
 class Nav extends Component{
 
+  goHome = () => {
+    this.props.closeMenu();
+    const lang = this.props.checkLanguage();
+    const path = '/' + lang + '/';
+    this.props.history.push(path);
+  }
+
   switchLanguage = () => {
-    // if(this.state.eng === 'show'){
-    //   this.setState({
-    //     eng: 'hide',
-    //     kor: 'show'
-    //   });
-    // }
-    // else if(this.state.eng === 'hide'){
-    //   this.setState({
-    //     eng: 'show',
-    //     kor: 'hide',
-    //   })
-    // }
+    this.props.closeMenu();
     let path = window.location.pathname;
     const lang = path.split('/')[1];
     if(lang === 'en'){
@@ -30,7 +26,6 @@ class Nav extends Component{
       document.querySelector('.kor').style.display = 'block';
       path = path.replace('/kor/', '/en/');
     }
-    console.log(path);
     this.props.history.push(path);
   }
 
@@ -47,8 +42,8 @@ class Nav extends Component{
 
     return(
       <nav className='nav'>
-        <img className='nav__menu' onClick={clickMenu} src={menuImg} alt='menu'/>
-        <Link to='/'><img className='nav__logo' onClick={closeMenu} src='assets/icons/logo-white.svg' alt='logo'/></Link>
+        <img className='nav__menu' onClick={clickMenu} src='../assets/icons/menu-white.svg' alt='menu'/>
+        <img className='nav__logo' onClick={this.goHome} src='../assets/icons/logo-white.svg' alt='logo'/>
         <h4 onClick={this.switchLanguage}>
           <div className={`kor nav__lang`}>한글</div>
           <div className={`eng nav__lang`}>ENG</div>

@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import '../styles/trialDetail.scss';
 
-export default class TrialDetail extends Component{
+export default class TrialDetailEng extends Component{
 
   constructor(props) {
     super(props);

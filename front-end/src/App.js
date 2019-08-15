@@ -2,27 +2,28 @@ import React, {Component} from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 
 import Nav from './components/Nav';
-import Menu from './components/Menu';
-import Main from './components/Main';
+import MenuEng from './components/MenuEng';
+import MenuKor from './components/MenuKor';
+import MainEng from './components/MainEng';
+import MainKor from './components/MainKor';
 import AboutDetailEng from './components/AboutDetailEng';
 import AboutDetailKor from './components/AboutDetailKor';
-import ProgramDetail from './components/ProgramDetail';
-import TrialDetail from './components/TrialDetail';
+import ProgramDetailEng from './components/ProgramDetailEng';
+import ProgramDetailKor from './components/ProgramDetailKor';
+import TrialDetailEng from './components/TrialDetailEng';
+import TrialDetailKor from './components/TrialDetailKor';
 
 import './styles/app.scss';
 export default class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      // eng: 'show',
-      // kor: 'hide',
-      lang: 'eng',
       menuOpen: false
     }
   }
 
   componentDidUpdate() {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
   }
 
   clickMenu = () => {
@@ -47,46 +48,43 @@ export default class App extends Component {
     })
   }
 
-  render() {
-    const { eng, kor, menuOpen } = this.state;
+  checkLanguage = () => {
+    let path = window.location.pathname;
+    const lang = path.split('/')[1];
+    return lang;
+  }
 
+  render() {
     return (
       <Router>
         <div className="App">
-          <Nav eng={eng} 
-               kor={kor} 
-               menuOpen={menuOpen}
+          <Nav menuOpen={this.state.menuOpen}
                clickMenu={this.clickMenu}
                closeMenu={this.closeMenu}
-               switchLanguage={this.switchLanguage}
-               />
+               checkLanguage={this.checkLanguage}/>
 
           <div className='content'>
-            <Menu eng={eng} 
-                  kor={kor}
-                  menuOpen={menuOpen} 
-                  clickMenu={this.clickMenu}/>
-
+            <Route path='/en/' 
+                   render={props => {return <MenuEng {...props} 
+                                                      menuOpen={this.state.menuOpen} 
+                                                      clickMenu={this.clickMenu}
+                                                      checkLanguage={this.checkLanguage}/>}}/>
+            <Route path='/kor/' 
+                   render={props => {return <MenuKor {...props} 
+                                                      menuOpen={this.state.menuOpen} 
+                                                      clickMenu={this.clickMenu}
+                                                      checkLanguage={this.checkLanguage}/>}}/>
             <Switch>
-              <Route path='/' exact render={(props) => (
-                <Main {...props}
-                      eng={eng} 
-                      kor={kor} 
-                      switchLanguage={this.switchLanguage}/>
-              )} />
-              <Route path='/en/about' render={(props) => (
-                <AboutDetailEng {...props} eng={eng} kor={kor}/>
-              )}/>
-               <Route path='/kor/about' render={(props) => (
-                <AboutDetailKor {...props} eng={eng} kor={kor}/>
-              )}/>
-              <Route path='/program' render={(props) => (
-                <ProgramDetail {...props} eng={eng} kor={kor}/>
-              )}/>
-              <Route path='/trial' render={(props) => (
-                <TrialDetail {...props} eng={eng} kor={kor}/>
-              )}/>
+              <Route exact path='/en/' component={MainEng}/>
+              <Route exact path='/kor/' component={MainKor}/>
+              <Route path='/en/about' component={AboutDetailEng}/>
+              <Route path='/kor/about' component={AboutDetailKor}/>
+              <Route path='/en/program' component={ProgramDetailEng}/>
+              <Route path='/kor/program' component={ProgramDetailKor}/>
+              <Route path='/en/trial' component={TrialDetailEng}/>
+              <Route path='/kor/trial' component={TrialDetailKor}/>
             </Switch>
+            <Redirect from='/' to='/en/'/>
           </div>
         </div>
       </Router>
