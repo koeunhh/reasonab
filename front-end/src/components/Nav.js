@@ -30,20 +30,30 @@ class Nav extends Component{
   }
 
   render(){
-    const { eng, kor, menuOpen, clickMenu, closeMenu } = this.props;
+    const { menuOpen, clickMenu } = this.props;
 
     var menuImg;
     if(menuOpen){
-      menuImg = 'assets/icons/x-white.svg';
+      menuImg = '../assets/icons/x-white.svg';
     }
     else{
-      menuImg = 'assets/icons/menu-white.svg';
+      menuImg = '../assets/icons/menu-white.svg';
     }
 
     return(
       <nav className='nav'>
-        <img className='nav__menu' onClick={clickMenu} src='../assets/icons/menu-white.svg' alt='menu'/>
+        <img className='nav__menu' onClick={clickMenu} src={menuImg} alt='menu'/>
         <img className='nav__logo' onClick={this.goHome} src='../assets/icons/logo-white.svg' alt='logo'/>
+        <div className='navEng nav__desktop'>
+          <Link to='/en/about'>About</Link>
+          <Link to='/en/program'>Program</Link>
+          <Link to='/en/trial'>Trial</Link>
+        </div>
+        <div className='navKor nav__desktop'>
+          <Link to='/kor/about'>About</Link>
+          <Link to='/kor/program'>Program</Link>
+          <Link to='/kor/trial'>Trial</Link>
+        </div>
         <h4 onClick={this.switchLanguage}>
           <div className={`kor nav__lang`}>한글</div>
           <div className={`eng nav__lang`}>ENG</div>

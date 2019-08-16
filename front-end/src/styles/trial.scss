@@ -2,13 +2,9 @@
 
 .trial {
   @include pagePadding;
-  
+
   .show {
     display: flex;
     flex-direction: column;
-
-    button {
-      @include detailButton;
-    }
   }
 }

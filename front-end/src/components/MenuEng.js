@@ -13,7 +13,6 @@ export default class MenuEng extends Component {
     }
     else{
       menu = 'closed';
-      
     }
 
     return(

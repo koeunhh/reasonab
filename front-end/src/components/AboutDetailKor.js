@@ -3,13 +3,11 @@ import React, { Component } from 'react';
 import '../styles/aboutDetail.scss';
 
 export default class AboutDetailKor extends Component {
-  render(){
-    const { eng, kor } = this.props;
-    
+  render(){    
     return(
       <div className='aboutDetail'>
-        <h1 className={kor}>RDA를 소개합니다.</h1>
-        <p className={kor}>
+        <h1>RDA를 소개합니다.</h1>
+        <p>
           한글로 된 글입니다. 한글로 된 글입니다. 한글로 된 글입니다.
           한글로 된 글입니다. 한글로 된 글입니다. 한글로 된 글입니다. 
           한글로 된 글입니다. 한글로 된 글입니다. 한글로 된 글입니다.
@@ -17,7 +15,7 @@ export default class AboutDetailKor extends Component {
           한글로 된 글입니다. 한글로 된 글입니다. 한글로 된 글입니다.
           한글로 된 글입니다. 한글로 된 글입니다. 한글로 된 글입니다.
         </p>
-        <p className={kor}>
+        <p>
           한글로 된 글입니다. 한글로 된 글입니다. 한글로 된 글입니다.
           한글로 된 글입니다. 한글로 된 글입니다. 한글로 된 글입니다. 
           한글로 된 글입니다. 한글로 된 글입니다. 한글로 된 글입니다.
@@ -25,7 +23,7 @@ export default class AboutDetailKor extends Component {
           한글로 된 글입니다. 한글로 된 글입니다. 한글로 된 글입니다.
           한글로 된 글입니다. 한글로 된 글입니다. 한글로 된 글입니다.
         </p>
-        <p className={kor}>
+        <p>
           한글로 된 글입니다. 한글로 된 글입니다. 한글로 된 글입니다.
           한글로 된 글입니다. 한글로 된 글입니다. 한글로 된 글입니다. 
           한글로 된 글입니다. 한글로 된 글입니다. 한글로 된 글입니다.

@@ -1,3 +1,4 @@
+@import './global.scss';
 
 .nav {
   background-color: black;
@@ -13,19 +14,49 @@
   align-items: center;
 
   box-sizing: border-box;
-  height: 48px;
+  height: 44px;
   width: 100%;
+
+  @media (min-width: $tablet) {
+    justify-content: space-between;
+    padding: 0 22px 0 18px;
+  }
 
   &__menu {
     width: 35px;
+
+    @media (min-width: $tablet) {
+      display: none;
+    }
   }
 
   &__logo {
     width: 40px;
+    cursor: pointer;
+  }
+
+  &__desktop {
+    display: none;
+
+    @media (min-width: $tablet) {
+      display: flex;
+      width: 50vw;
+      justify-content: space-between;
+      
+      &.navKor {
+        display: none;
+      }
+  
+      a {
+        text-decoration: none;
+        color: white;
+      }
+    }
   }
 
   &__lang{
     width: 32px;
+    cursor: pointer;
 
     &.eng {
       display: none;
