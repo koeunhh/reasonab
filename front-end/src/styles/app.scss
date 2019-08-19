@@ -1,3 +1,4 @@
+@import './global.scss';
 
 html {
   font-size: 62.5%;
@@ -13,5 +14,20 @@ html {
       position: relative;
       padding-top: 44px;
     }
+
+    // footer {
+    //   border-top: 1px solid black;
+    //   margin: 10px;
+    //   padding: 5px 0 40px;
+
+    //   h5 {
+    //     margin: 3px;
+    //     font-weight: bold;
+
+    //     &.credit {
+    //       color: #9A9A9A;
+    //     }
+    //   }
+    // }
   } 
 }

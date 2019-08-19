@@ -1,0 +1,15 @@
+.trialSubmission {
+  background-color: black;
+  color: white;
+  min-height: calc(100vh - 44px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h2 {
+    text-align: center;
+    width: 300px;
+    font-weight: normal;
+    line-height: 35px;
+  }
+}

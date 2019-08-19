@@ -1,0 +1,109 @@
+@import './global.scss';
+
+.main {
+  @include pagePadding;
+  text-align: center;
+  line-height: 30px;
+
+  button {
+    width: 170px;
+    margin-bottom: 50px;
+  }
+
+  img {
+    margin: 50px 0;
+  }
+
+  .about{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 80px 0;
+  
+    &__logo{
+      margin-bottom: 80px;
+      width: 60vw;
+  
+      @media (min-width: $tablet) {
+        width: 300px;
+        margin: 120px 0;
+      }
+    }
+  
+    &__title {
+      text-align: center;
+    
+      @media (min-width: $tablet) {
+        margin: 80px 0 120px;
+        font-weight: normal;
+      }
+    }
+  
+    &__img {
+      object-fit: contain;
+      width: 100%;
+      
+      @media (min-width: $tablet) {
+        width: 500px;
+      }
+    }
+  }
+  
+  .program {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 80px 0;
+
+    &__img {
+      width: 100vw;
+      
+      @media (min-width: $tablet) {
+        width: 100%;
+      }
+    }
+
+    &__sub {
+      font-weight: bold;
+    }
+  }
+  
+  .trial {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 80px 0;
+
+    &__img {
+      width: 100vw;
+      
+      @media (min-width: $tablet) {
+        width: 100%;
+      }
+    }
+
+    &__sub {
+      font-weight: bold;
+    }
+
+    &__welcome {
+      margin: 50px 0 200px;
+    }
+  }
+
+  footer {
+    text-align: left;
+    border-top: 1px solid black;
+    margin: 10px;
+    padding: 5px 0 40px;
+
+    h5 {
+      margin: 3px;
+      font-weight: bold;
+
+      &.credit {
+        color: #9A9A9A;
+      }
+    }
+  }
+}

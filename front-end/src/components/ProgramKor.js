@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import '../styles/program.scss';
+import '../styles/main.scss';
 
 class ProgramKor extends Component {
   
@@ -13,17 +13,13 @@ class ProgramKor extends Component {
   render(){
     return(
       <div className='program'>
-        <h1>프로그램</h1>
-        <p>
-          한글로 된 글입니다. 한글로 된 글입니다. 한글로 된 글입니다.
-          한글로 된 글입니다. 한글로 된 글입니다. 한글로 된 글입니다. 
-          한글로 된 글입니다. 한글로 된 글입니다. 한글로 된 글입니다.
-          한글로 된 글입니다. 한글로 된 글입니다. 한글로 된 글입니다. 
-          한글로 된 글입니다. 한글로 된 글입니다. 한글로 된 글입니다.
-          한글로 된 글입니다. 한글로 된 글입니다. 한글로 된 글입니다.
-        </p>
-        <button onClick={this.redirectTo}>자세히 보기</button>
-      </div>
+      <h2 className='program__title'>
+        RDA는 당신과 당신의 포트폴리오를 새로운 방법으로 생각합니다
+      </h2>
+      <h4 className='program__sub'>우리는 당신을 위해 다르게 생각합니다</h4>
+      <img className='program__img' src='../assets/images/mainImg2.png' alt='mainImg2'/>
+      <button onClick={this.redirectTo}>2019 RDA 프로그램</button>
+    </div>
     )
   }
 }

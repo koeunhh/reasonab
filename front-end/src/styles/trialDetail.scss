@@ -3,12 +3,14 @@
 .trialDetail {  
   @include pagePadding;
   padding: 80px 4rem;
+  min-height: calc(100vh - 44px);
   background-color: black;
   color: #D9D9D9;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 
   &__title {
     margin: 0 0 13px;
@@ -17,18 +19,25 @@
     color: white;
   }
 
-  &__description {
-    margin: 2px 0;
+  &__intro {
+    text-align: center;
+    margin-bottom: 32px;
+  }
 
-    &#price {
+  &__description {
+    display: none;
+    margin: 2px 0;
+    text-align: center;
+
+    #price {
       font-family: 'Gotham';
       font-size: 10px;
     }
   }
 
   &__form {
-    // display: none;
-    display: flex;
+    display: none;
+    // display: flex;
     flex-direction: column;
     align-items: center;
 
@@ -83,9 +92,12 @@
           display: none;
         }
 
-        &#message {
+        &#statement {
+          text-align: left;
+          box-sizing: border-box;
           margin: 8px 0 0;
-          height: 100px;
+          padding: 20px;
+          height: 150px;
         } 
       }
 
@@ -97,7 +109,6 @@
       }
 
       textarea{
-        padding-top: 20px;
       }
 
       h5 {
@@ -120,6 +131,7 @@
 
       img {
         width: 100vw;
+        margin-top: 40px;
       }
 
       .quote {
@@ -142,10 +154,5 @@
         }
       }
     }
-  }
-
-
-  &__success {
-    display: none;
   }
 }

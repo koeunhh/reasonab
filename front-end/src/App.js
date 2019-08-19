@@ -12,6 +12,8 @@ import ProgramDetailEng from './components/ProgramDetailEng';
 import ProgramDetailKor from './components/ProgramDetailKor';
 import TrialDetailEng from './components/TrialDetailEng';
 import TrialDetailKor from './components/TrialDetailKor';
+import TrialSubmissionEng from './components/TrialSubmissionEng';
+import TrialSubmissionKor from './components/TrialSubmissionKor';
 
 import './styles/app.scss';
 export default class App extends Component {
@@ -81,11 +83,18 @@ export default class App extends Component {
               <Route path='/kor/about' component={AboutDetailKor}/>
               <Route path='/en/program' component={ProgramDetailEng}/>
               <Route path='/kor/program' component={ProgramDetailKor}/>
-              <Route path='/en/trial' component={TrialDetailEng}/>
-              <Route path='/kor/trial' component={TrialDetailKor}/>
+              <Route exact path='/en/trial' component={TrialDetailEng}/>
+              <Route exact path='/kor/trial' component={TrialDetailKor}/>
+              <Route path='/en/trial/formSubmitted' component={TrialSubmissionEng}/>
+              <Route path='/kor/trial/formSubmitted' component={TrialSubmissionKor}/>
             </Switch>
-            <Redirect from='/' to='/en/'/>
+            <Redirect exact from='/' to='/en/'/>
           </div>
+          {/* <footer>
+            <h5>Copyright © 2019 RDA All rights reserved.</h5>
+            <h5 className='credit'>Code by Koeun Lee</h5>
+            <h5 className='credit'>Design by Luke Jung</h5>
+          </footer> */}
         </div>
       </Router>
     )

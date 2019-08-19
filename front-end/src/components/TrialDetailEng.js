@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
+import {withRouter} from 'react-router-dom';
 import axios from 'axios';
 
 import '../styles/trialDetail.scss';
 
-export default class TrialDetailEng extends Component{
+class TrialDetailEng extends Component{
 
   constructor(props) {
     super(props);
@@ -11,7 +12,7 @@ export default class TrialDetailEng extends Component{
         formDisplay: 'none',
         file: null,
         tab: 1,
-        numOfTabs: 3
+        numOfTabs: 2
     };
     this.major = React.createRef();
   }
@@ -23,8 +24,10 @@ export default class TrialDetailEng extends Component{
     formData.append('name', e.target.name.value);
     formData.append('phone', e.target.phone.value);
     formData.append('email', e.target.email.value);
-    formData.append('message', e.target.message.value);
     formData.append('userfile', this.state.file);
+    formData.append('title', e.target.title.value);
+    formData.append('medium', e.target.medium.value);
+    formData.append('statement', e.target.statement.value);
 
     axios.post('http://localhost:8080/trial', formData, {
       headers: {
@@ -39,6 +42,7 @@ export default class TrialDetailEng extends Component{
     });
     
     e.target.reset();
+    this.props.history.push('/en/trial/formSubmitted');
   }
 
   uploadFile = e => {
@@ -89,10 +93,6 @@ export default class TrialDetailEng extends Component{
       currentTab.style.display = 'none';
       if(tab === this.state.numOfTabs){
         this.refs.nextBtn.type = 'submit';
-        var form = document.getElementsByTagName('form')[0];
-        form.style.display = 'none';
-        var success = document.getElementsByClassName('trialDetail__success')[0];
-        success.style.display = 'block';
       }
       else {
         this.setState({tab: tab + 1});
@@ -135,6 +135,7 @@ export default class TrialDetailEng extends Component{
     if(this.state.tab === 2){
       let textarea = current.querySelector('textarea');
       if(textarea.value === ''){
+        this.changeFormColor();
         textarea.placeholder = 'THIS FIELD IS REQUIRED';
         validInput = false;
       }
@@ -150,6 +151,8 @@ export default class TrialDetailEng extends Component{
     const trialDetail = document.querySelector('.trialDetail');
     trialDetail.style.backgroundColor = this.$white;
     trialDetail.style.color = this.$grey;
+    const trialDetailTitle = trialDetail.querySelector('.trialDetail__title');
+    trialDetailTitle.style.color = this.$grey;
     var currentTab = this.refs[`tab${this.state.tab}`];
     const formInput = currentTab.querySelectorAll('.input');
     for(let i = 0; i < formInput.length; i++){
@@ -167,48 +170,59 @@ export default class TrialDetailEng extends Component{
     fileBtn.style.color = this.$grey;
     fileBtn.style.borderColor = this.$grey;
     fileBtn.style.backgroundColor = this.$white;
+    const quote = currentTab.querySelector('.quote');
+    quote.style.color = this.$grey;
   }
 
   resetFormColor = () => {
     const trialDetail = document.querySelector('.trialDetail');
-    trialDetail.style.backgroundColor = 'black';
-    trialDetail.style.color = this.$lightgrey;
+    trialDetail.style = 'revert';
+    const trialDetailTitle = document.querySelector('.trialDetail__title');
+    trialDetailTitle.style = 'revert';
     var currentTab = this.refs[`tab${this.state.tab}`];
     const formInput = currentTab.querySelectorAll('.input');
     for(let i = 0; i < formInput.length; i++){
-      formInput[i].style.backgroundColor = 'black';
-      formInput[i].style.color = this.$grey;
-      formInput[i].style.border = `solid 1px ${this.$grey}`;
+      formInput[i].style = 'revert';
       formInput[i].placeholder = '';
     }
     const btn = trialDetail.querySelectorAll('button');
     for(let i = 0; i < btn.length; i++){
-      btn[i].style.color = this.$white;
-      btn[i].style.borderColor = this.$white;
-      btn[i].style.backgroundColor = 'black';
+      btn[i].style = 'revert';
     }
+    const startBtn = trialDetail.querySelector('.trialDetail__startBtn');
+    startBtn.style.display = 'none';
+    const fileBtn = trialDetail.querySelector('#fileBtn');
+    fileBtn.style = 'revert';
+    const fileError = trialDetail.querySelector('.fileError');    
+    fileError.style.display = 'none';
+    const quote = currentTab.querySelector('.quote');
+    quote.style.color = this.$white;
   }
 
-  selectMajor = e => {
-    console.log(e.target.value);
+  showForm = () => {
+    document.querySelector('.trialDetail__intro').style.display = 'none';
+    document.querySelector('.trialDetail__startBtn').style.display = 'none';
+    document.querySelector('.trialDetail__description').style.display = 'block';
+    document.querySelector('.trialDetail__form').style.display = 'flex';
   }
 
   render(){
 
     return(
       <div className='trialDetail'>
-        <h3 className='trialDetail__title'>Get free feedback</h3>
-        <h4 className='trialDetail__description'>Free for first visitors only</h4>
-        <h4 className='trialDetail__description'>Up to 3 art pieces</h4>
-        <h4 className='trialDetail__description' id='price'>(Original price is $250/per piece)</h4>
-        {/* <button className='trialDetail__btn' onClick={this.showForm} ref='formBtn'>Free Trial</button> */}
+        <h3 className='trialDetail__title'>Get Free Feedback</h3>
+        <h4 className='trialDetail__intro'>
+          Portfolio is a way to showcase your skills and creativity. 
+          We also believe that it is a reflection of your personality.
+          For us to get to know more about you send us your portfolio.
+          We will review your portfolio and give some feedback.</h4>
+        <button onClick={this.showForm} className='trialDetail__startBtn'>Free Feedback</button>
+        <h4 className='trialDetail__description'>
+          Free for first visitors only <br/>
+          Up to 3 art pieces <br/>
+          <span id='price'>(Original price is $250/per piece)</span>
+        </h4>
         <form onSubmit={this.formSubmit} className='trialDetail__form' ref='trialForm'>
-          <div className='trialDetail__form--tab' ref='tab0'>
-            <label>Major</label>
-            <input type='button' value='Ui/Ux' onClick={this.selectMajor}/>
-            <input type='button' value='Interior Design' onClick={this.selectMajor}/>
-            <input type='button' value='Animation' onClick={this.selectMajor}/>
-          </div>
           <div className='trialDetail__form--tab' ref='tab1'>
             <label>Your Name</label>  
             <input className='input' type='text' name='name'/> 
@@ -229,7 +243,7 @@ export default class TrialDetailEng extends Component{
             <label>Medium*</label>  
             <input className='input' type='text' name='medium'/>
             <label>Short Statement**</label>  
-            <textarea className='input' id='message' name='message'></textarea>
+            <textarea className='input' id='statement' name='statement'></textarea>
             <h5>Maximum 50 words</h5>
             <div id='medium'>
               <h2>Medium</h2>
@@ -242,15 +256,14 @@ export default class TrialDetailEng extends Component{
             <img src='../assets/images/studentwork2.png' alt='studentwork2'/>   
             <h4 className='quote'>You are not alone. We are here to help you get into your dream school.</h4>
           </div>
-          <div className='trialDetail__form--tab' ref='tab3'>
-          </div>
           <div className='trialDetail__form--buttons'>
             <button type='button' className='prevBtn' ref='prevBtn' onClick={this.prevTab}>Previous</button>
             <button type='button' className='nextBtn' ref='nextBtn' onClick={this.nextTab}>Next</button>            
           </div>
         </form>
-        <h3 className='trialDetail__success'>Form submitted!</h3>
       </div>
     )
   }
 }
+
+export default withRouter(TrialDetailEng);

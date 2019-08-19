@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import '../styles/about.scss';
+import '../styles/main.scss';
 
 class AboutKor extends Component {
 
@@ -13,18 +13,17 @@ class AboutKor extends Component {
   render(){
     return(
       <div className='about'>
-        <img src='../assets/icons/mainlogo-white.svg' alt='logo'/>
-        <h1>RDA를 소개합니다</h1>
-        <p>
-          한글로 된 글입니다. 한글로 된 글입니다. 한글로 된 글입니다.
-          한글로 된 글입니다. 한글로 된 글입니다. 한글로 된 글입니다. 
-          한글로 된 글입니다. 한글로 된 글입니다. 한글로 된 글입니다.
-          한글로 된 글입니다. 한글로 된 글입니다. 한글로 된 글입니다. 
-          한글로 된 글입니다. 한글로 된 글입니다. 한글로 된 글입니다.
-          한글로 된 글입니다. 한글로 된 글입니다. 한글로 된 글입니다.
-        </p>
-        <button onClick={this.redirectTo}>자세히 보기</button>
-      </div>
+      <img className='about__logo' src='../assets/icons/mainlogo-black.svg' alt='logo'/>
+      <h2 className='about__title'>
+          아티스트들과 디자이너들이 <br/>
+          함께 만들어가는 <br/>
+          | <br/>
+          새로운 형식의<br/>
+          디자인 아카데미
+      </h2>
+      <img className='about__img' src='../assets/images/mainImg1.png' alt='mainImg1'/>
+      <button className='about__btn' onClick={this.redirectTo}>RDA 알아보기</button>
+    </div>
     )
   }
 }

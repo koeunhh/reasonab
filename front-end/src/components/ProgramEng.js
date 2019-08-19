@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import '../styles/program.scss';
+import '../styles/main.scss';
 
 class ProgramEng extends Component {
   
@@ -13,17 +13,12 @@ class ProgramEng extends Component {
   render(){
     return(
       <div className='program'>
-        <h1>Program</h1>
-        <p>
-          Id aliqua velit nulla nulla consectetur mollit nisi id sint ea magna. 
-          Magna ipsum eiusmod eu consequat laboris velit excepteur incididunt 
-          culpa commodo et dolore occaecat veniam. Irure elit quis cillum et quis sunt 
-          fugiat sint cillum mollit mollit. Fugiat qui reprehenderit ullamco consequat anim 
-          voluptate elit exercitation. Id pariatur adipisicing commodo eiusmod minim eiusmod 
-          elit eiusmod minim ad mollit do. Consequat labore nostrud nulla cupidatat tempor. 
-          Voluptate deserunt eu cillum quis tempor excepteur nulla occaecat nulla irure ad.
-        </p>
-        <button onClick={this.redirectTo}>See details</button>
+        <h2 className='program__title'>
+          RDA completely rethinks everything about you &amp; your Portfolio
+        </h2>
+        <h4 className='program__sub'>We think differently, because you need to</h4>
+        <img className='program__img' src='../assets/images/mainImg2.png' alt='mainImg2'/>
+        <button onClick={this.redirectTo}>2019 RDA Program</button>
       </div>
     )
   }

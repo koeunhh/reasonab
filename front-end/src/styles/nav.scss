@@ -19,7 +19,8 @@
 
   @media (min-width: $tablet) {
     justify-content: space-between;
-    padding: 0 22px 0 18px;
+    padding-right: 8rem;
+    padding-left: calc(8rem - 10px);
   }
 
   &__menu {

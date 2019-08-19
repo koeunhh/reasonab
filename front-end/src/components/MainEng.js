@@ -11,6 +11,11 @@ export default class MainEng extends Component {
         <AboutEng/>
         <ProgramEng/>
         <TrialEng/>
+        <footer>
+            <h5>Copyright © 2019 RDA All rights reserved.</h5>
+            <h5 className='credit'>Code by Koeun Lee</h5>
+            <h5 className='credit'>Design by Luke Jung</h5>
+        </footer>
       </div>
     )
   }
