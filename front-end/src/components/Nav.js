@@ -5,11 +5,32 @@ import '../styles/nav.scss';
 
 class Nav extends Component{
 
+  componentDidMount(){
+    this.navLanguage();
+  }
+
+  componentDidUpdate(){
+    this.navLanguage();
+  }
+
   goHome = () => {
     this.props.closeMenu();
     const lang = this.props.checkLanguage();
     const path = '/' + lang + '/';
     this.props.history.push(path);
+  }
+
+  navLanguage = () => {
+    let path = window.location.pathname;
+    const lang = path.split('/')[1];
+    if(lang === 'en'){
+      document.querySelector('.navEng').style = 'revert';
+      document.querySelector('.navKor').style.display = 'none';
+    }
+    else if(lang === 'kor'){
+      document.querySelector('.navKor').style = 'revert';
+      document.querySelector('.navEng').style.display = 'none';
+    }
   }
 
   switchLanguage = () => {
@@ -50,9 +71,9 @@ class Nav extends Component{
           <Link to='/en/trial'>Trial</Link>
         </div>
         <div className='navKor nav__desktop'>
-          <Link to='/kor/about'>About</Link>
-          <Link to='/kor/program'>Program</Link>
-          <Link to='/kor/trial'>Trial</Link>
+          <Link to='/kor/about'>RDA소개</Link>
+          <Link to='/kor/program'>프로그램</Link>
+          <Link to='/kor/trial'>무료체험</Link>
         </div>
         <h4 onClick={this.switchLanguage}>
           <div className={`kor nav__lang`}>한글</div>
