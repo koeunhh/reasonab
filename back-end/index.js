@@ -12,6 +12,8 @@ app.use(cors({
  
 app.use('/', require('./routes/sendEmail'));
  
-app.listen(8080, () => {
-  console.log('running on http://localhost:8080');
+const PORT = process.env.PORT || 8080;
+
+app.listen(PORT, () => {
+  console.log(`running on port ${PORT}`);
 })

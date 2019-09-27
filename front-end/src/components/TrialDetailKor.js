@@ -29,7 +29,7 @@ class TrialDetailKor extends Component{
     formData.append('medium', e.target.medium.value);
     formData.append('statement', e.target.statement.value);
 
-    axios.post('http://localhost:8080/trial', formData, {
+    axios.post('https://rda-toronto.herokuapp.com/trial', formData, {
       headers: {
         'content-type': 'multipart/form-data'
       }
