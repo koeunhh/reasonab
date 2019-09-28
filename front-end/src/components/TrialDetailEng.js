@@ -10,6 +10,7 @@ class TrialDetailEng extends Component{
     super(props);
     this.state ={
         formDisplay: 'none',
+        filename: '',
         file: null,
         tab: 1,
         numOfTabs: 2
@@ -17,38 +18,48 @@ class TrialDetailEng extends Component{
     this.major = React.createRef();
   }
 
+  getBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result.split(',')[1]);
+      reader.onerror = error => reject(error);
+    });
+  }
+
   formSubmit = e => {
     e.preventDefault();
 
-    const formData = new FormData();
-    formData.append('name', e.target.name.value);
-    formData.append('phone', e.target.phone.value);
-    formData.append('email', e.target.email.value);
-    formData.append('userfile', this.state.file);
-    formData.append('title', e.target.title.value);
-    formData.append('medium', e.target.medium.value);
-    formData.append('statement', e.target.statement.value);
-
-    axios.post('https://rda-toronto.herokuapp.com/trial', formData, {
-      headers: {
-        'content-type': 'multipart/form-data'
-      }
+    axios.post('https://rda-toronto.herokuapp.com/trial', {
+      name: e.target.name.value,
+      phone: e.target.phone.value,
+      email: e.target.email.value,
+      file: this.state.file,
+      filename: this.state.filename,
+      title: e.target.title.value,
+      medium: e.target.medium.value,
+      statement: e.target.statement.value
     })
-    .then(function (response) {
-      console.log(response);
+    .then(function (res) {
+      console.log(res);
     })
-    .catch(function (error) {
-      console.log(error);
+    .catch(function (err) {
+      console.log(err);
     });
-    
+
     e.target.reset();
     this.props.history.push('/en/trial/formSubmitted');
   }
 
   uploadFile = e => {
-    console.log(e.target.files[0]);
+    const file = e.target.files[0];
+    const code = this.getBase64(file);
+    this.getBase64(file).then(
+      data => this.setState({file: data})
+    )
+    .catch(err => console.log(err));
     this.setState({
-      file: e.target.files[0]
+      filename: file.name
     })
   }
 
