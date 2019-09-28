@@ -15,12 +15,12 @@ router.post('/', (req, res) => {
   var medium = req.body.medium;
   var statement = req.body.statement;
 
-  const msg = {
-    to: "koeunhh@gmail.com",
+  const mail = {
     from: {
       email: `${email}`,
       name: `${name}`
     },
+    to: "koeunhh@gmail.com",
     subject: `RDA Portfolio Review Requested - ${name}`,
     text: `
     <Student information> \n
@@ -38,7 +38,15 @@ router.post('/', (req, res) => {
     ]
   };
 
-  sgMail.send(msg);
+  let confirmation = {
+    from: "koeunhh@gmail.com",
+    to: email,
+    subject: `Portfolio Submission to RDA`,
+    text: 'Your portfolio has been submitted for review. \n We will get back to you shortly with a feedback! \n\n Thank you, \n\n RDA (Reasonab Design Academy)'
+  };
+
+  sgMail.send(mail);
+  sgMail.send(confirmation);
 })
 
 module.exports = router;
