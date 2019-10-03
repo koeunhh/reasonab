@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../styles/trialSubmission.scss';
+import '../../styles/trialSubmission.scss';
 
 export default class TrialSubmissionEng extends Component {
   render(){    

@@ -2,14 +2,15 @@ import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import axios from 'axios';
 
-import '../styles/trialDetail.scss';
+import '../../styles/trial.scss';
 
-class TrialDetailKor extends Component{
+class TrialEng extends Component{
 
   constructor(props) {
     super(props);
     this.state ={
         formDisplay: 'none',
+        filename: '',
         file: null,
         tab: 1,
         numOfTabs: 2
@@ -17,43 +18,54 @@ class TrialDetailKor extends Component{
     this.major = React.createRef();
   }
 
+  getBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result.split(',')[1]);
+      reader.onerror = error => reject(error);
+    });
+  }
+
   formSubmit = e => {
     e.preventDefault();
 
-    const formData = new FormData();
-    formData.append('name', e.target.name.value);
-    formData.append('phone', e.target.phone.value);
-    formData.append('email', e.target.email.value);
-    formData.append('userfile', this.state.file);
-    formData.append('title', e.target.title.value);
-    formData.append('medium', e.target.medium.value);
-    formData.append('statement', e.target.statement.value);
-
-    axios.post('https://rda-toronto.herokuapp.com/trial', formData, {
-      headers: {
-        'content-type': 'multipart/form-data'
-      }
+    axios.post('https://rda-toronto.herokuapp.com/trial', {
+      name: e.target.name.value,
+      phone: e.target.phone.value,
+      email: e.target.email.value,
+      file: this.state.file,
+      filename: this.state.filename,
+      title: e.target.title.value,
+      medium: e.target.medium.value,
+      statement: e.target.statement.value
     })
-    .then(function (response) {
-      console.log(response);
+    .then(function (res) {
+      console.log(res);
     })
-    .catch(function (error) {
-      console.log(error);
+    .catch(function (err) {
+      console.log(err);
     });
-    
+
     e.target.reset();
-    this.props.history.push('/kor/trial/formSubmitted');
+    this.props.history.push('/en/trial/formSubmitted');
   }
 
   uploadFile = e => {
-    console.log(e.target.files[0]);
+    const file = e.target.files[0];
+    const code = this.getBase64(file);
+    this.getBase64(file).then(
+      data => this.setState({file: data})
+    )
+    .catch(err => console.log(err));
     this.setState({
-      file: e.target.files[0]
+      filename: file.name
     })
   }
 
   componentDidMount(){
     this.showTab();
+    document.querySelector('.App').style.backgroundColor = 'black';
   }
 
   componentDidUpdate(){
@@ -77,10 +89,10 @@ class TrialDetailKor extends Component{
       this.refs.prevBtn.style.display = 'block';
     }
     if(tab === numOfTabs) {
-      nextBtn.innerHTML = '보내기';
+      nextBtn.innerHTML = 'Send';
     }
     else{
-      nextBtn.innerHTML = '다음';
+      nextBtn.innerHTML = 'Next';
     }
   }
 
@@ -122,7 +134,7 @@ class TrialDetailKor extends Component{
       let myInput = inputs[i].value;
       if(myInput === ''){
         this.changeFormColor();
-        inputs[i].placeholder = '빈칸을 채워주세요';
+        inputs[i].placeholder = 'THIS FIELD IS REQUIRED';
         //file validation
         if(this.state.tab === 2 && file === ''){
           current.querySelector('.fileError').style.display = 'block';
@@ -136,7 +148,7 @@ class TrialDetailKor extends Component{
       let textarea = current.querySelector('textarea');
       if(textarea.value === ''){
         this.changeFormColor();
-        textarea.placeholder = '빈칸을 채워주세요';
+        textarea.placeholder = 'THIS FIELD IS REQUIRED';
         validInput = false;
       }
     }
@@ -148,11 +160,11 @@ class TrialDetailKor extends Component{
   $white = 'white';
 
   changeFormColor = () => {
-    const trialDetail = document.querySelector('.trialDetail');
-    trialDetail.style.backgroundColor = this.$white;
-    trialDetail.style.color = this.$grey;
-    const trialDetailTitle = trialDetail.querySelector('.trialDetail__title');
-    trialDetailTitle.style.color = this.$grey;
+    const trial = document.querySelector('.trial');
+    trial.style.backgroundColor = this.$white;
+    trial.style.color = this.$grey;
+    const trialTitle = trial.querySelector('.trial__title');
+    trialTitle.style.color = this.$grey;
     var currentTab = this.refs[`tab${this.state.tab}`];
     const formInput = currentTab.querySelectorAll('.input');
     for(let i = 0; i < formInput.length; i++){
@@ -160,13 +172,13 @@ class TrialDetailKor extends Component{
       formInput[i].style.color = this.$grey;
       formInput[i].style.border = `1px solid ${this.$grey}`;
     }
-    const btn = trialDetail.querySelectorAll('button');
+    const btn = trial.querySelectorAll('button');
     for(let i = 0; i < btn.length; i++){
       btn[i].style.color = this.$grey;
       btn[i].style.borderColor = this.$grey;
       btn[i].style.backgroundColor = this.$white;
     }
-    const fileBtn = trialDetail.querySelector('#fileBtn');
+    const fileBtn = trial.querySelector('#fileBtn');
     fileBtn.style.color = this.$grey;
     fileBtn.style.borderColor = this.$grey;
     fileBtn.style.backgroundColor = this.$white;
@@ -175,88 +187,90 @@ class TrialDetailKor extends Component{
   }
 
   resetFormColor = () => {
-    const trialDetail = document.querySelector('.trialDetail');
-    trialDetail.style = 'revert';
-    const trialDetailTitle = document.querySelector('.trialDetail__title');
-    trialDetailTitle.style = 'revert';
+    const trial = document.querySelector('.trial');
+    trial.style = 'revert';
+    const trialTitle = document.querySelector('.trial__title');
+    trialTitle.style = 'revert';
     var currentTab = this.refs[`tab${this.state.tab}`];
     const formInput = currentTab.querySelectorAll('.input');
     for(let i = 0; i < formInput.length; i++){
       formInput[i].style = 'revert';
       formInput[i].placeholder = '';
     }
-    const btn = trialDetail.querySelectorAll('button');
+    const btn = trial.querySelectorAll('button');
     for(let i = 0; i < btn.length; i++){
       btn[i].style = 'revert';
     }
-    const startBtn = trialDetail.querySelector('.trialDetail__startBtn');
+    const startBtn = trial.querySelector('.trial__startBtn');
     startBtn.style.display = 'none';
-    const fileBtn = trialDetail.querySelector('#fileBtn');
+    const fileBtn = trial.querySelector('#fileBtn');
     fileBtn.style = 'revert';
-    const fileError = trialDetail.querySelector('.fileError');    
+    const fileError = trial.querySelector('.fileError');    
     fileError.style.display = 'none';
     const quote = currentTab.querySelector('.quote');
     quote.style.color = this.$white;
   }
 
   showForm = () => {
-    document.querySelector('.trialDetail__intro').style.display = 'none';
-    document.querySelector('.trialDetail__startBtn').style.display = 'none';
-    document.querySelector('.trialDetail__description').style.display = 'block';
-    document.querySelector('.trialDetail__form').style.display = 'flex';
+    document.querySelector('.trial__intro').style.display = 'none';
+    document.querySelector('.trial__startBtn').style.display = 'none';
+    document.querySelector('.trial__description').style.display = 'block';
+    document.querySelector('.trial__form').style.display = 'flex';
   }
 
   render(){
 
     return(
-      <div className='trialDetail'>
-        <h3 className='trialDetail__title'>무료 피드백 체험</h3>
-        <h4 className='trialDetail__intro'>
-          포트폴리오는 아티스트의 실력과 창의력 뿐만이 아니라 아티스트의 성향도 보여줍니다.
-          알다(RDA)는 당신을 더 알아가고 싶습니다. 포트폴리오를 보내주시면 무료 피드백을 드립니다.</h4>
-        <button onClick={this.showForm} className='trialDetail__startBtn'>무료 피드백</button>
-        <h4 className='trialDetail__description'>
-          첫 이용자만 1회 무료 <br/>
-          작품 3개까지 가능 <br/>
-          <span id='price'>(가격은 $250/작품 입니다)</span>
+      <div className='trial'>
+        <h3 className='trial__title'>Get Free Feedback</h3>
+        <h4 className='trial__intro'>
+          Portfolio is a way to showcase your skills and creativity. 
+          We also believe that it is a reflection of your personality.
+          For us to get to know more about you send us your portfolio.
+          We will review your portfolio and give some feedback.</h4>
+        <button onClick={this.showForm} className='trial__startBtn'>Free Feedback</button>
+        <h4 className='trial__description'>
+          Free for first visitors only <br/>
+          Up to 3 art pieces <br/>
+          <span id='price'>(Original price is $250/per piece)</span>
         </h4>
-        <form onSubmit={this.formSubmit} className='trialDetail__form' ref='trialForm'>
-          <div className='trialDetail__form--tab' ref='tab1'>
-            <label>이름</label>  
+        <form onSubmit={this.formSubmit} className='trial__form' ref='trialForm'>
+          <div className='trial__form--tab' ref='tab1'>
+            <label>Your Name</label>  
             <input className='input' type='text' name='name'/> 
-            <label>연락처</label>
+            <label>Phone Number</label>
             <input className='input' type='phone' name='phone'/>
-            <label>이메일</label>
+            <label>Email</label>
             <input className='input' type='email' name='email'/>
             <img src='../assets/images/studentwork1.png' alt='studentwork1'/> 
-            <h4 className='quote'>RDA는 당신과 함께합니다. 원하시는 학교에 들어갈 수 있도록 도와드리겠습니다.</h4>
+            <h4 className='quote'>You are not alone. We are here to help you get into your dream school.</h4>
           </div>
-          <div className='trialDetail__form--tab' ref='tab2'>
+          <div className='trial__form--tab' ref='tab2'>
             <label>File</label>
             <input className='input' id='file' type="file" name="userfile" onChange={this.uploadFile}/>
-            <label id='fileBtn' htmlFor='file'>파일 업로드</label>
-            <h3 className='fileError'>파일 업로드 해주세요</h3>
-            <label>제목</label>  
+            <label id='fileBtn' htmlFor='file'>Upload file</label>
+            <h3 className='fileError'>PLEASE UPLOAD A FILE</h3>
+            <label>Title</label>  
             <input className='input' type='text' name='title'/> 
-            <label>재료*</label>  
+            <label>Medium*</label>  
             <input className='input' type='text' name='medium'/>
-            <label>작품 설명**</label>  
+            <label>Short Statement**</label>  
             <textarea className='input' id='statement' name='statement'></textarea>
-            <h5>최대 50 글자</h5>
+            <h5>Maximum 50 words</h5>
             <div id='medium'>
-              <h2>재료</h2>
-              <p>작품에 쓰인 재료를 의미합니다 <br/>
-                  eg. 종이/나무/세라믹에 한 오일 페인팅 <br/>
-                  eg. 검은 종이에 색연필</p>
-              <h2>작품 설명</h2>
-              <p>작품 영감이나 설명을 의미합니다. 간단하게 한 두 문장이면 충분합니다.</p>
+              <h2>Medium</h2>
+              <p>materials you used for your art pieces <br/>
+                  eg. oil painting on paper/wood/ceramic <br/>
+                  eg. mixed media/coloured pencil on black paper</p>
+              <h2>Short Statement</h2>
+              <p>a short paragraph about your intention or inspiration of your art pieces</p>
             </div>
             <img src='../assets/images/studentwork2.png' alt='studentwork2'/>   
-            <h4 className='quote'>RDA는 당신과 함께합니다. 원하시는 학교에 들어갈 수 있도록 도와드리겠습니다.</h4>
+            <h4 className='quote'>You are not alone. We are here to help you get into your dream school.</h4>
           </div>
-          <div className='trialDetail__form--buttons'>
-            <button type='button' className='prevBtn' ref='prevBtn' onClick={this.prevTab}>이전</button>
-            <button type='button' className='nextBtn' ref='nextBtn' onClick={this.nextTab}>다음</button>            
+          <div className='trial__form--buttons'>
+            <button type='button' className='prevBtn' ref='prevBtn' onClick={this.prevTab}>Previous</button>
+            <button type='button' className='nextBtn' ref='nextBtn' onClick={this.nextTab}>Next</button>            
           </div>
         </form>
       </div>
@@ -264,4 +278,4 @@ class TrialDetailKor extends Component{
   }
 }
 
-export default withRouter(TrialDetailKor);
+export default withRouter(TrialEng);

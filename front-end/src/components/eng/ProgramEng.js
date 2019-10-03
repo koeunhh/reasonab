@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 
-import '../styles/aboutDetail.scss';
+import '../../styles/program.scss';
 
-export default class AboutDetailEng extends Component {
+export default class ProgramEng extends Component {
+
+  componentDidMount(){
+    document.querySelector('.App').style = 'revert';
+  }
+  
   render(){    
     return(
-      <div className='aboutDetail'>
-        <h1>About Detail</h1>
+      <div className='program'>
+        <h1>Program Detail</h1>
         <p>
           Labore qui do adipisicing ullamco est est nisi veniam ad deserunt reprehenderit excepteur ad. 
           Culpa aliquip mollit pariatur dolor elit esse ut proident adipisicing. 

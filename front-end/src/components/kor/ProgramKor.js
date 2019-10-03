@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
-import '../styles/programDetail.scss';
+import '../../styles/program.scss';
 
-export default class ProgramDetailKor extends Component {
+export default class ProgramKor extends Component {
   render(){
     
     return(
-      <div className='programDetail'>
+      <div className='program'>
         <h1>프로그램</h1>
         <p>
           한글로 된 글입니다. 한글로 된 글입니다. 한글로 된 글입니다.

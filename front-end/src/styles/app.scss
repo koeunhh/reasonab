@@ -5,29 +5,40 @@ html {
 
   .App {
     font-size: 1.6rem;
-  
+    font-family: 'GothamMedium';
+    
     .hide{
       display: none;
     }
     
     .content {
+      @include pagePadding;
       position: relative;
       padding-top: 44px;
     }
 
-    // footer {
-    //   border-top: 1px solid black;
-    //   margin: 10px;
-    //   padding: 5px 0 40px;
+    footer {
+      text-align: left;
+      border-top: 1px solid black;
+      padding: 20px 5px 50px;
+  
+      @media (min-width: $tablet) {
+        padding: 25px 8px 60px;
+      }
 
-    //   h5 {
-    //     margin: 3px;
-    //     font-weight: bold;
+      h5 {
+        margin: 0 0 8px;
+        font-weight: bold;
 
-    //     &.credit {
-    //       color: #9A9A9A;
-    //     }
-    //   }
-    // }
+        @media (min-width: $tablet) {
+          margin-bottom: 12px;
+        }
+  
+        &.credit {
+          color: #9A9A9A;
+          font-weight: normal;
+        }
+      }
+    }
   } 
 }

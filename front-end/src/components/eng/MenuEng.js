@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 
-import '../styles/menu.scss';
+import '../../styles/menu.scss';
 
 export default class MenuEng extends Component {
   render(){

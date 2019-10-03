@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
-import '../styles/aboutDetail.scss';
+import '../../styles/about.scss';
 
-export default class AboutDetailKor extends Component {
+export default class AboutKor extends Component {
   render(){    
     return(
-      <div className='aboutDetail'>
+      <div className='about'>
         <h1>RDA를 소개합니다.</h1>
         <p>
           한글로 된 글입니다. 한글로 된 글입니다. 한글로 된 글입니다.
