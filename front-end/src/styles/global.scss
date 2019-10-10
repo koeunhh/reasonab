@@ -38,10 +38,10 @@ button {
 }
 
 @mixin pagePadding {
-  padding: 0 4rem;
+  padding: 44px 3rem 20px;
 
   @media (min-width: $tablet) {
-    padding: 0 8rem;
+    padding: 44px 8rem;
   }
 }
 

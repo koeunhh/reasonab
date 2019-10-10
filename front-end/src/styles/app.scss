@@ -14,16 +14,18 @@ html {
     .content {
       @include pagePadding;
       position: relative;
-      padding-top: 44px;
+      min-height: calc(100vh - 64px);
+      display: flex;
+      flex-direction: column;
     }
 
     footer {
       text-align: left;
       border-top: 1px solid black;
-      padding: 20px 5px 50px;
+      padding: 15px 5px 0;
   
       @media (min-width: $tablet) {
-        padding: 25px 8px 60px;
+        padding: 25px 8px 0;
       }
 
       h5 {
