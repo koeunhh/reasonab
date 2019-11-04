@@ -30,7 +30,8 @@ class TrialEng extends Component{
   formSubmit = e => {
     e.preventDefault();
 
-    axios.post('https://rda-toronto.herokuapp.com/trial', {
+    // axios.post('https://rda-toronto.herokuapp.com/trial', {
+    axios.post('http://localhost:8080/trial', {
       name: e.target.name.value,
       phone: e.target.phone.value,
       email: e.target.email.value,
@@ -101,7 +102,8 @@ class TrialEng extends Component{
     const {tab} = this.state;
     var currentTab = this.refs[`tab${tab}`];
     if(this.validateForm(currentTab)){
-      this.resetFormColor();      
+      this.resetFormColor();
+      const trialInput = this.refs['trialInput'];
       currentTab.style.display = 'none';
       if(tab === this.state.numOfTabs){
         this.refs.nextBtn.type = 'submit';
@@ -127,19 +129,12 @@ class TrialEng extends Component{
 
   validateForm = (current) => {
     let inputs = current.getElementsByTagName('input');
-    let file = document.querySelector('#file').value;
     let validInput = true;
     //input validation
     for(let i = 0; i < inputs.length; i++){
       let myInput = inputs[i].value;
       if(myInput === ''){
         this.changeFormColor();
-        inputs[i].placeholder = 'THIS FIELD IS REQUIRED';
-        //file validation
-        if(this.state.tab === 2 && file === ''){
-          current.querySelector('.fileError').style.display = 'block';
-          document.querySelector('#fileBtn').style.marginBottom = 0;
-        }
         validInput = false;
       }
     }
@@ -148,81 +143,37 @@ class TrialEng extends Component{
       let textarea = current.querySelector('textarea');
       if(textarea.value === ''){
         this.changeFormColor();
-        textarea.placeholder = 'THIS FIELD IS REQUIRED';
         validInput = false;
       }
     }
     return validInput;
   }
 
-  $grey = '#797979';
-  $lightgrey = '#D9D9D9';
-  $white = 'white';
-
   changeFormColor = () => {
-    const trial = document.querySelector('.trial');
-    trial.style.backgroundColor = this.$white;
-    trial.style.color = this.$grey;
-    const trialTitle = trial.querySelector('.trial__title');
-    trialTitle.style.color = this.$grey;
-    var currentTab = this.refs[`tab${this.state.tab}`];
-    const formInput = currentTab.querySelectorAll('.input');
-    for(let i = 0; i < formInput.length; i++){
-      formInput[i].style.backgroundColor = this.$white;
-      formInput[i].style.color = this.$grey;
-      formInput[i].style.border = `1px solid ${this.$grey}`;
-    }
-    const btn = trial.querySelectorAll('button');
-    for(let i = 0; i < btn.length; i++){
-      btn[i].style.color = this.$grey;
-      btn[i].style.borderColor = this.$grey;
-      btn[i].style.backgroundColor = this.$white;
-    }
-    const fileBtn = trial.querySelector('#fileBtn');
-    fileBtn.style.color = this.$grey;
-    fileBtn.style.borderColor = this.$grey;
-    fileBtn.style.backgroundColor = this.$white;
-    const quote = currentTab.querySelector('.quote');
-    quote.style.color = this.$grey;
+    this.refs.trial.id = 'trialWhite';
+    const app = document.querySelector('.App');
+    app.style.backgroundColor = 'white';
   }
 
   resetFormColor = () => {
-    const trial = document.querySelector('.trial');
-    trial.style = 'revert';
-    const trialTitle = document.querySelector('.trial__title');
-    trialTitle.style = 'revert';
-    var currentTab = this.refs[`tab${this.state.tab}`];
-    const formInput = currentTab.querySelectorAll('.input');
-    for(let i = 0; i < formInput.length; i++){
-      formInput[i].style = 'revert';
-      formInput[i].placeholder = '';
-    }
-    const btn = trial.querySelectorAll('button');
-    for(let i = 0; i < btn.length; i++){
-      btn[i].style = 'revert';
-    }
-    const startBtn = trial.querySelector('.trial__startBtn');
-    startBtn.style.display = 'none';
-    const fileBtn = trial.querySelector('#fileBtn');
-    fileBtn.style = 'revert';
-    const fileError = trial.querySelector('.fileError');    
-    fileError.style.display = 'none';
-    const quote = currentTab.querySelector('.quote');
-    quote.style.color = this.$white;
+    this.refs.trial.id = 'trialBlack';
+    const app = document.querySelector('.App');
+    app.style.backgroundColor = 'black';
   }
 
   showForm = () => {
-    document.querySelector('.trial__intro').style.display = 'none';
-    document.querySelector('.trial__startBtn').style.display = 'none';
-    document.querySelector('.trial__description').style.display = 'block';
-    document.querySelector('.trial__form').style.display = 'flex';
+    const trial = this.refs.trial;
+    trial.querySelector('.trial__intro').style.display = 'none';
+    trial.querySelector('.trial__startBtn').style.display = 'none';
+    trial.querySelector('.trial__description').style.display = 'block';
+    trial.querySelector('.trial__form').style.display = 'flex';
   }
 
   render(){
 
     return(
-      <div className='trial'>
-        <h3 className='trial__title'>Get Free Feedback</h3>
+      <div className='trial' id='trialBlack' ref='trial'>
+        <h3 className='trial__title' ref='trialTitle'>Get Free Feedback</h3>
         <h4 className='trial__intro'>
           Portfolio is a way to showcase your skills and creativity. 
           We also believe that it is a reflection of your personality.
@@ -237,25 +188,25 @@ class TrialEng extends Component{
         <form onSubmit={this.formSubmit} className='trial__form' ref='trialForm'>
           <div className='trial__form--tab' ref='tab1'>
             <label>Your Name</label>  
-            <input className='input' type='text' name='name'/> 
+            <input className='input' ref='trialInput' type='text' name='name' placeholder='THIS FIELD IS REQUIRED'/> 
             <label>Phone Number</label>
-            <input className='input' type='phone' name='phone'/>
+            <input className='input' ref='trialInput' type='phone' name='phone' placeholder='THIS FIELD IS REQUIRED'/>
             <label>Email</label>
-            <input className='input' type='email' name='email'/>
+            <input className='input' ref='trialInput' type='email' name='email' placeholder='THIS FIELD IS REQUIRED'/>
             <img src='../assets/images/studentwork1.png' alt='studentwork1'/> 
             <h4 className='quote'>You are not alone. We are here to help you get into your dream school.</h4>
           </div>
           <div className='trial__form--tab' ref='tab2'>
             <label>File</label>
-            <input className='input' id='file' type="file" name="userfile" onChange={this.uploadFile}/>
+            <input className='input' ref='trialInput' id='file' type="file" name="userfile" onChange={this.uploadFile}/>
             <label id='fileBtn' htmlFor='file'>Upload file</label>
             <h3 className='fileError'>PLEASE UPLOAD A FILE</h3>
             <label>Title</label>  
-            <input className='input' type='text' name='title'/> 
+            <input className='input' ref='trialInput' type='text' name='title' placeholder='THIS FIELD IS REQUIRED'/> 
             <label>Medium*</label>  
-            <input className='input' type='text' name='medium'/>
+            <input className='input' ref='trialInput' type='text' name='medium' placeholder='THIS FIELD IS REQUIRED'/>
             <label>Short Statement**</label>  
-            <textarea className='input' id='statement' name='statement'></textarea>
+            <textarea className='input' ref='trialInput' id='statement' name='statement' placeholder='THIS FIELD IS REQUIRED'></textarea>
             <h5>Maximum 50 words</h5>
             <div id='medium'>
               <h2>Medium</h2>

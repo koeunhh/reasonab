@@ -28,7 +28,7 @@ button {
   @include button;
 }
 
-.trialDetail button, #fileBtn {
+.trial button, #fileBtn {
   @include button;
   background-color: black;
   color: white;
@@ -74,9 +74,4 @@ h2 {
 h5 {
   font-size: 10px;
   font-weight: normal;
-}
-
-.trialDetail {
-  background-color: black;
-  color: white;
 }
