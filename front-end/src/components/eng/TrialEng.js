@@ -67,6 +67,8 @@ class TrialEng extends Component{
   componentDidMount(){
     this.showTab();
     document.querySelector('.App').style.backgroundColor = 'black';
+    document.querySelector('.copyright').style.color = 'white';
+    document.querySelector('footer').style.borderColor = '#9A9A9A';
   }
 
   componentDidUpdate(){
@@ -165,27 +167,32 @@ class TrialEng extends Component{
     const trial = this.refs.trial;
     trial.querySelector('.trial__intro').style.display = 'none';
     trial.querySelector('.trial__startBtn').style.display = 'none';
-    trial.querySelector('.trial__description').style.display = 'block';
     trial.querySelector('.trial__form').style.display = 'flex';
+    if(window.innerWidth >= 1024){
+      this.refs.studentWorkTablet.style.display = 'block';
+    }
   }
 
   render(){
 
     return(
       <div className='trial' id='trialBlack' ref='trial'>
-        <h3 className='trial__title' ref='trialTitle'>Get Free Feedback</h3>
-        <h4 className='trial__intro'>
-          Portfolio is a way to showcase your skills and creativity. 
-          We also believe that it is a reflection of your personality.
-          For us to get to know more about you send us your portfolio.
-          We will review your portfolio and give some feedback.</h4>
-        <button onClick={this.showForm} className='trial__startBtn'>Free Feedback</button>
-        <h4 className='trial__description'>
-          Free for first visitors only <br/>
-          Up to 3 art pieces <br/>
-          <span id='price'>(Original price is $250/per piece)</span>
-        </h4>
+        <div className='trial__intro'>
+          <h3 className='trial__intro--title'>Get Free Feedback</h3>
+          <h4 className='trial__intro--description'>
+            Portfolio is a way to showcase your skills and creativity. 
+            We also believe that it is a reflection of your personality.
+            For us to get to know more about you send us your portfolio.
+            We will review your portfolio and give some feedback.</h4>
+          <button onClick={this.showForm} className='trial__startBtn'>Free Feedback</button>
+        </div>
         <form onSubmit={this.formSubmit} className='trial__form' ref='trialForm'>
+          <h3 className='trial__form--title'>Get Free Feedback</h3>
+          <h4 className='trial__form--description'>
+            Free for first visitors only <br/>
+            Up to 3 art pieces <br/>
+            <span id='price'>(Original price is $250/per piece)</span>
+          </h4>
           <div className='trial__form--tab' ref='tab1'>
             <label>Your Name</label>  
             <input className='input' ref='trialInput' type='text' name='name' placeholder='THIS FIELD IS REQUIRED'/> 
@@ -194,7 +201,6 @@ class TrialEng extends Component{
             <label>Email</label>
             <input className='input' ref='trialInput' type='email' name='email' placeholder='THIS FIELD IS REQUIRED'/>
             <img src='../assets/images/studentwork1.png' alt='studentwork1'/> 
-            <h4 className='quote'>You are not alone. We are here to help you get into your dream school.</h4>
           </div>
           <div className='trial__form--tab' ref='tab2'>
             <label>File</label>
@@ -217,13 +223,14 @@ class TrialEng extends Component{
               <p>a short paragraph about your intention or inspiration of your art pieces</p>
             </div>
             <img src='../assets/images/studentwork2.png' alt='studentwork2'/>   
-            <h4 className='quote'>You are not alone. We are here to help you get into your dream school.</h4>
           </div>
+          <h4 className='trial__form--quote'>You are not alone. We are here to help you get into your dream school.</h4>
           <div className='trial__form--buttons'>
             <button type='button' className='prevBtn' ref='prevBtn' onClick={this.prevTab}>Previous</button>
             <button type='button' className='nextBtn' ref='nextBtn' onClick={this.nextTab}>Next</button>            
           </div>
         </form>
+        <img className='trial__studentWork' ref='studentWorkTablet' src='../assets/images/studentwork1.png' alt='studentwork1'/>
       </div>
     )
   }

@@ -25,7 +25,9 @@ export default class MainEng extends Component {
     return(
       <div className='main'>
         <div className='main__about'>
-          <img className='main__about--logo' src='../assets/icons/mainlogo-black.svg' alt='logo'/>
+          <div className='main__about--logo'>
+            <img src='../assets/icons/mainlogo-black.svg' alt='logo'/>
+          </div>
           <h2 className='main__about--title'>
               A New Kind of <br/>
               Tutoring Academy. <br/>

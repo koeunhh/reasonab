@@ -89,7 +89,7 @@ export default class App extends Component {
             </Switch>
             <Redirect exact from='/' to='/en/'/>
             <footer>
-              <h5>Copyright © 2019 RDA All rights reserved.</h5>
+              <h5 className='copyright'>Copyright © 2019 RDA All rights reserved.</h5>
               <h5 className='credit'>Code by Koeun Lee</h5>
               <h5 className='credit'>Design by Luke Jung</h5>
             </footer>

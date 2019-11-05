@@ -14,15 +14,16 @@
     align-items: center;
   
     &--logo{
-      margin: 200px 0;
-      width: 60vw;
-  
-      @media (min-width: $tablet) {
-        width: 250px;
-        margin: 400px 0;
-      }
-      @media (min-width: $desktop) {
-        margin: 200px 0;
+      height: calc(100vh - 44px);
+      display: flex;
+      justify-content: center;
+
+      img {
+        width: 60vw;
+    
+        @media (min-width: $tablet) {
+          width: 250px;
+        }
       }
     }
   
