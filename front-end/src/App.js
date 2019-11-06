@@ -24,8 +24,28 @@ export default class App extends Component {
     }
   }
 
+  componentDidMount(){
+    this.changeFooterColor(); 
+  }
+
   componentDidUpdate() {
     window.scrollTo(0, 0);
+    document.querySelector('.content').style = 'revert';
+    this.changeFooterColor(); 
+  }
+
+  changeFooterColor = () => {
+    const content = document.querySelector('.content').style.backgroundColor;
+    let footer = document.querySelector('footer').style;
+    let copyright = document.querySelector('.copyright').style;
+    if (content === 'black'){
+      footer.borderColor = '#9A9A9A';
+      copyright.color = 'white';
+    }
+    else {
+      footer.borderColor = 'black';
+      copyright.color = 'black';    
+    }
   }
 
   clickMenu = () => {
@@ -78,16 +98,16 @@ export default class App extends Component {
             <Switch>
               <Route exact path='/en/' component={MainEng}/>
               <Route exact path='/kor/' component={MainKor}/>
-              <Route path='/en/about' component={AboutEng}/>
-              <Route path='/kor/about' component={AboutKor}/>
-              <Route path='/en/program' component={ProgramEng}/>
-              <Route path='/kor/program' component={ProgramKor}/>
-              <Route exact path='/en/trial' component={TrialEng}/>
-              <Route exact path='/kor/trial' component={TrialKor}/>
+              <Route path='/en/about' render={props => {return <AboutEng {...props} changeFooterColor={this.changeFooterColor}/>}} />
+              <Route path='/kor/about' render={props => {return <AboutKor {...props} changeFooterColor={this.changeFooterColor}/>}} />
+              <Route path='/en/program' render={props => {return <ProgramEng {...props} changeFooterColor={this.changeFooterColor}/>}} />
+              <Route path='/kor/program' render={props => {return <ProgramKor {...props} changeFooterColor={this.changeFooterColor}/>}} />
+              <Route exact path='/en/trial' render={props => {return <TrialEng {...props} changeFooterColor={this.changeFooterColor}/>}} />
+              <Route exact path='/kor/trial' render={props => {return <TrialKor {...props} changeFooterColor={this.changeFooterColor}/>}} />
               <Route path='/en/trial/formSubmitted' component={TrialSubmissionEng}/>
               <Route path='/kor/trial/formSubmitted' component={TrialSubmissionKor}/>
+              <Redirect exact from='/' to='/en/'/>
             </Switch>
-            <Redirect exact from='/' to='/en/'/>
             <footer>
               <h5 className='copyright'>Copyright © 2019 RDA All rights reserved.</h5>
               <h5 className='credit'>Code by Koeun Lee</h5>

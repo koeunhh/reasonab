@@ -5,7 +5,8 @@ import '../../styles/about.scss';
 export default class AboutEng extends Component {
 
   componentDidMount(){
-    document.querySelector('.App').style = 'revert';
+    document.querySelector('.content').style = 'revert';
+    this.props.changeFooterColor();
   }
 
   render(){    

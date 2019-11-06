@@ -62,7 +62,7 @@ class Nav extends Component{
     }
 
     return(
-      <nav className='nav'>
+      <nav className='nav' ref='nav'>
         <img className='nav__menu' onClick={clickMenu} src={menuImg} alt='menu'/>
         <img className='nav__logo' onClick={this.goHome} src='../assets/icons/logo-white.svg' alt='logo'/>
         <div className='navEng nav__desktop'>

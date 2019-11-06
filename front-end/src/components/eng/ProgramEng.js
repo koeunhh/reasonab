@@ -5,7 +5,8 @@ import '../../styles/program.scss';
 export default class ProgramEng extends Component {
 
   componentDidMount(){
-    document.querySelector('.App').style = 'revert';
+    document.querySelector('.content').style = 'revert';
+    this.props.changeFooterColor();  
   }
   
   render(){    

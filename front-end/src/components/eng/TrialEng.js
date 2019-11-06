@@ -15,7 +15,7 @@ class TrialEng extends Component{
         tab: 1,
         numOfTabs: 2
     };
-    this.major = React.createRef();
+    // this.major = React.createRef();
   }
 
   getBase64 = (file) => {
@@ -66,9 +66,8 @@ class TrialEng extends Component{
 
   componentDidMount(){
     this.showTab();
-    document.querySelector('.App').style.backgroundColor = 'black';
-    document.querySelector('.copyright').style.color = 'white';
-    document.querySelector('footer').style.borderColor = '#9A9A9A';
+    document.querySelector('.content').style.backgroundColor = 'black';
+    this.props.changeFooterColor();
   }
 
   componentDidUpdate(){
@@ -153,14 +152,16 @@ class TrialEng extends Component{
 
   changeFormColor = () => {
     this.refs.trial.id = 'trialWhite';
-    const app = document.querySelector('.App');
-    app.style.backgroundColor = 'white';
+    const content = document.querySelector('.content');
+    content.style.backgroundColor = 'white';
+    this.props.changeFooterColor();
   }
 
   resetFormColor = () => {
     this.refs.trial.id = 'trialBlack';
-    const app = document.querySelector('.App');
-    app.style.backgroundColor = 'black';
+    const content = document.querySelector('.content');
+    content.style.backgroundColor = 'black';
+    this.props.changeFooterColor();
   }
 
   showForm = () => {
