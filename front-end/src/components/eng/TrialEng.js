@@ -18,6 +18,22 @@ class TrialEng extends Component{
     // this.major = React.createRef();
   }
 
+  componentDidMount(){
+    window.scrollTo(0, 0);
+    this.showTab();
+    document.querySelector('.content').style.backgroundColor = 'black';
+    this.props.changeFooterColor();
+  }
+
+  componentDidUpdate(){
+    this.showTab();
+    let file = document.querySelector('#file').value;
+    if(file !== ''){
+      document.querySelector('.fileError').style.display = 'none';
+      document.querySelector('#fileBtn').style.marginBottom = '40px';
+    }
+  }
+
   getBase64 = (file) => {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -26,13 +42,14 @@ class TrialEng extends Component{
       reader.onerror = error => reject(error);
     });
   }
-
+  
   formSubmit = e => {
     e.preventDefault();
 
     // axios.post('https://rda-toronto.herokuapp.com/trial', {
     axios.post('http://localhost:8080/trial', {
-      name: e.target.name.value,
+      firstname: e.target.firstname.value,
+      lastname: e.target.lastname.value,
       phone: e.target.phone.value,
       email: e.target.email.value,
       file: this.state.file,
@@ -54,7 +71,6 @@ class TrialEng extends Component{
 
   uploadFile = e => {
     const file = e.target.files[0];
-    const code = this.getBase64(file);
     this.getBase64(file).then(
       data => this.setState({file: data})
     )
@@ -64,26 +80,13 @@ class TrialEng extends Component{
     })
   }
 
-  componentDidMount(){
-    this.showTab();
-    document.querySelector('.content').style.backgroundColor = 'black';
-    this.props.changeFooterColor();
-  }
-
-  componentDidUpdate(){
-    this.showTab();
-    let file = document.querySelector('#file').value;
-    if(file !== ''){
-      document.querySelector('.fileError').style.display = 'none';
-      document.querySelector('#fileBtn').style.marginBottom = '40px';
-    }
-  }
 
   showTab = () => {
     const { tab, numOfTabs} = this.state;
     var currentTab = this.refs[`tab${this.state.tab}`];
     currentTab.style.display = 'flex';
     var { prevBtn, nextBtn } = this.refs;
+
     if(tab === 1){
       prevBtn.style.display = 'none';
     }
@@ -104,7 +107,6 @@ class TrialEng extends Component{
     var currentTab = this.refs[`tab${tab}`];
     if(this.validateForm(currentTab)){
       this.resetFormColor();
-      const trialInput = this.refs['trialInput'];
       currentTab.style.display = 'none';
       if(tab === this.state.numOfTabs){
         this.refs.nextBtn.type = 'submit';
@@ -165,6 +167,7 @@ class TrialEng extends Component{
   }
 
   showForm = () => {
+    window.scrollTo(0, 0);
     const trial = this.refs.trial;
     trial.querySelector('.trial__intro').style.display = 'none';
     trial.querySelector('.trial__startBtn').style.display = 'none';
@@ -189,14 +192,16 @@ class TrialEng extends Component{
         </div>
         <form onSubmit={this.formSubmit} className='trial__form' ref='trialForm'>
           <h3 className='trial__form--title'>Get Free Feedback</h3>
-          <h4 className='trial__form--description'>
+          {/* <h4 className='trial__form--description'>
             Free for first visitors only <br/>
             Up to 3 art pieces <br/>
             <span id='price'>(Original price is $250/per piece)</span>
-          </h4>
+          </h4> */}
           <div className='trial__form--tab' ref='tab1'>
-            <label>Your Name</label>  
-            <input className='input' ref='trialInput' type='text' name='name' placeholder='THIS FIELD IS REQUIRED'/> 
+            <label>First Name</label>  
+            <input className='input' ref='trialInput' type='text' name='firstname' placeholder='THIS FIELD IS REQUIRED'/> 
+            <label>Last Name</label>  
+            <input className='input' ref='trialInput' type='text' name='lastname' placeholder='THIS FIELD IS REQUIRED'/> 
             <label>Phone Number</label>
             <input className='input' ref='trialInput' type='phone' name='phone' placeholder='THIS FIELD IS REQUIRED'/>
             <label>Email</label>
@@ -231,7 +236,7 @@ class TrialEng extends Component{
             <button type='button' className='nextBtn' ref='nextBtn' onClick={this.nextTab}>Next</button>            
           </div>
         </form>
-        <img className='trial__studentWork' ref='studentWorkTablet' src='../assets/images/studentwork1.png' alt='studentwork1'/>
+      <img className='trial__studentWork' ref='studentWorkTablet' src={`../assets/images/studentwork${this.state.tab}.png`} alt='studentwork1'/>
       </div>
     )
   }

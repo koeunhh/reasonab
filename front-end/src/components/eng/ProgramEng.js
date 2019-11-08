@@ -5,6 +5,7 @@ import '../../styles/program.scss';
 export default class ProgramEng extends Component {
 
   componentDidMount(){
+    window.scrollTo(0, 0);
     document.querySelector('.content').style = 'revert';
     this.props.changeFooterColor();  
   }

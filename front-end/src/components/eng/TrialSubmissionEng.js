@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import '../../styles/trialSubmission.scss';
 
 export default class TrialSubmissionEng extends Component {
+  
+  componentDidMount(){
+    document.querySelector('.content').style = 'revert';
+  }
+  
   render(){    
     return(
       <div className='trialSubmission'>

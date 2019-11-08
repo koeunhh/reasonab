@@ -1,12 +1,11 @@
 @import './global.scss';
 
 .program {
-  @include pagePadding;
+  @include pageInnerMargin;
   display: flex;
   flex-direction: column;
   
   h1 {
-    // @include pagePadding;
     margin: 50px 0;
   }
 

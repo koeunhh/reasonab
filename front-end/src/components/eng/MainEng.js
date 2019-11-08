@@ -8,17 +8,14 @@ export default class MainEng extends Component {
 
   toAbout = () => {
     this.props.history.push('/en/main__about');
-    window.scrollTo(0, 0);
   }
 
   toProgram = () => {
     this.props.history.push('/en/program');
-    window.scrollTo(0, 0);
   }
 
   toTrial = () => {
     this.props.history.push('/en/trial');
-    window.scrollTo(0, 0);
   }
 
   render(){
