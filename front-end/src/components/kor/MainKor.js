@@ -2,35 +2,38 @@ import React, { Component } from 'react';
 
 import '../../styles/main.scss';
 export default class MainEng extends Component {
-  tomain__About = () => {
+  componentDidMount(){
+    this.props.whiteBackground();
+  }
+
+  toAbout = () => {
     this.props.history.push('/en/main__about');
-    window.scrollTo(0, 0);
   }
 
   toProgram = () => {
     this.props.history.push('/en/program');
-    window.scrollTo(0, 0);
   }
 
   toTrial = () => {
     this.props.history.push('/en/trial');
-    window.scrollTo(0, 0);
   }
 
   render(){
     return(
       <div className='main'>
         <div className='main__about'>
-          <img className='main__about--logo' src='../assets/icons/mainlogo-black.svg' alt='logo'/>
+          <div className='main__about--logo'>
+            <img src='../assets/icons/mainlogo-black.svg' alt='logo'/>
+          </div>
           <h2 className='main__about--title'>
-            아티스트들과 디자이너들이 <br/>
-            함께 만들어가는 <br/>
-            | <br/>
-            새로운 형식의<br/>
-            디자인 아카데미
+              아티스트들과 디자이너들이 <br/>
+              함께 만들어가는 <br/>
+              | <br/>
+              새로운 형식의<br/>
+              디자인 아카데미
           </h2>
           <img className='main__about--img' src='../assets/images/mainImg1.png' alt='mainImg1'/>
-          <button className='main__about--btn' onClick={this.tomain__About}>RDA 알아보기</button>
+          <button className='main__about--btn' onClick={this.toAbout}>RDA 알아보기</button>
         </div>        
         <div className='main__program'>
           <h2 className='main__program--title'>
@@ -49,11 +52,6 @@ export default class MainEng extends Component {
           <button onClick={this.toTrial}>무료체험</button>
           <h2 className='main__trial--welcome'>RDA에 오신 것을 환영합니다</h2>
         </div>
-        <footer>
-            <h5>Copyright © 2019 RDA All rights reserved.</h5>
-            <h5 className='credit'>Code by Koeun Lee</h5>
-            <h5 className='credit'>Design by Luke Jung</h5>
-        </footer>
       </div>
     )
   }

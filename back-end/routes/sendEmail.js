@@ -6,7 +6,8 @@ const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 router.post('/', (req, res) => {
-  var name = req.body.name;
+  var firstname = req.body.firstname;
+  var lastname = req.body.lastname;
   var phone = req.body.phone;
   var email = req.body.email;
   var file = req.body.file;
@@ -18,13 +19,13 @@ router.post('/', (req, res) => {
   const mail = {
     from: {
       email: `${email}`,
-      name: `${name}`
+      name: `${firstname} ${lastname}`
     },
     to: "koeunhh@gmail.com",
-    subject: `RDA Portfolio Review Requested - ${name}`,
+    subject: `RDA Portfolio Review Requested - ${firstname} ${lastname}`,
     text: `
     <Student information> \n
-    name: ${name} \n 
+    name: ${firstname} ${lastname} \n 
     email: ${email} \n 
     phone number: ${phone} \n\n 
     <Portfolio> \n

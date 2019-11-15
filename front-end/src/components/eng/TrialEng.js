@@ -21,16 +21,18 @@ class TrialEng extends Component{
   componentDidMount(){
     window.scrollTo(0, 0);
     this.showTab();
-    document.querySelector('.content').style.backgroundColor = 'black';
+    this.props.blackBackground();
     this.props.changeFooterColor();
   }
 
   componentDidUpdate(){
     this.showTab();
     let file = document.querySelector('#file').value;
+    const filename = this.state.filename;
+    console.log(filename);
     if(file !== ''){
       document.querySelector('.fileError').style.display = 'none';
-      document.querySelector('#fileBtn').style.marginBottom = '40px';
+      document.querySelector('#fileBtn').style.marginBottom = 0;
     }
   }
 
@@ -154,15 +156,13 @@ class TrialEng extends Component{
 
   changeFormColor = () => {
     this.refs.trial.id = 'trialWhite';
-    const content = document.querySelector('.content');
-    content.style.backgroundColor = 'white';
+    this.props.whiteBackground();
     this.props.changeFooterColor();
   }
 
   resetFormColor = () => {
     this.refs.trial.id = 'trialBlack';
-    const content = document.querySelector('.content');
-    content.style.backgroundColor = 'black';
+    this.props.blackBackground();
     this.props.changeFooterColor();
   }
 
@@ -182,7 +182,7 @@ class TrialEng extends Component{
     return(
       <div className='trial' id='trialBlack' ref='trial'>
         <div className='trial__intro'>
-          <h3 className='trial__intro--title'>Get Free Feedback</h3>
+          <h2 className='trial__intro--title'>Get Free Feedback</h2>
           <h4 className='trial__intro--description'>
             Portfolio is a way to showcase your skills and creativity. 
             We also believe that it is a reflection of your personality.
@@ -191,7 +191,7 @@ class TrialEng extends Component{
           <button onClick={this.showForm} className='trial__startBtn'>Free Feedback</button>
         </div>
         <form onSubmit={this.formSubmit} className='trial__form' ref='trialForm'>
-          <h3 className='trial__form--title'>Get Free Feedback</h3>
+          <h2 className='trial__form--title'>Get Free Feedback</h2>
           {/* <h4 className='trial__form--description'>
             Free for first visitors only <br/>
             Up to 3 art pieces <br/>
@@ -212,7 +212,8 @@ class TrialEng extends Component{
             <label>File</label>
             <input className='input' ref='trialInput' id='file' type="file" name="userfile" onChange={this.uploadFile}/>
             <label id='fileBtn' htmlFor='file'>Upload file</label>
-            <h3 className='fileError'>PLEASE UPLOAD A FILE</h3>
+            <h4 id='filename'>{this.state.filename}</h4>
+            <h2 className='fileError'>PLEASE UPLOAD A FILE</h2>
             <label>Title</label>  
             <input className='input' ref='trialInput' type='text' name='title' placeholder='THIS FIELD IS REQUIRED'/> 
             <label>Medium*</label>  

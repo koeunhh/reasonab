@@ -10,66 +10,85 @@ class TrialKor extends Component{
     super(props);
     this.state ={
         formDisplay: 'none',
+        filename: '',
         file: null,
         tab: 1,
         numOfTabs: 2
     };
-    this.major = React.createRef();
-  }
-
-  formSubmit = e => {
-    e.preventDefault();
-
-    const formData = new FormData();
-    formData.append('name', e.target.name.value);
-    formData.append('phone', e.target.phone.value);
-    formData.append('email', e.target.email.value);
-    formData.append('userfile', this.state.file);
-    formData.append('title', e.target.title.value);
-    formData.append('medium', e.target.medium.value);
-    formData.append('statement', e.target.statement.value);
-
-    axios.post('https://rda-toronto.herokuapp.com/trial', formData, {
-      headers: {
-        'content-type': 'multipart/form-data'
-      }
-    })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-    
-    e.target.reset();
-    this.props.history.push('/kor/trial/formSubmitted');
-  }
-
-  uploadFile = e => {
-    console.log(e.target.files[0]);
-    this.setState({
-      file: e.target.files[0]
-    })
+    // this.major = React.createRef();
   }
 
   componentDidMount(){
+    window.scrollTo(0, 0);
     this.showTab();
+    this.props.blackBackground();
+    this.props.changeFooterColor();
   }
 
   componentDidUpdate(){
     this.showTab();
     let file = document.querySelector('#file').value;
+    const filename = this.state.filename;
+    console.log(filename);
     if(file !== ''){
       document.querySelector('.fileError').style.display = 'none';
-      document.querySelector('#fileBtn').style.marginBottom = '40px';
+      document.querySelector('#fileBtn').style.marginBottom = 0;
     }
   }
+
+  getBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result.split(',')[1]);
+      reader.onerror = error => reject(error);
+    });
+  }
+  
+  formSubmit = e => {
+    e.preventDefault();
+
+    axios.post('https://rda-toronto.herokuapp.com/trial', {
+    // axios.post('http://localhost:8080/trial', {
+      firstname: e.target.firstname.value,
+      lastname: e.target.lastname.value,
+      phone: e.target.phone.value,
+      email: e.target.email.value,
+      file: this.state.file,
+      filename: this.state.filename,
+      title: e.target.title.value,
+      medium: e.target.medium.value,
+      statement: e.target.statement.value
+    })
+    .then(function (res) {
+      console.log(res);
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+
+    e.target.reset();
+    this.props.history.push('/en/trial/formSubmitted');
+  }
+
+  uploadFile = e => {
+    const file = e.target.files[0];
+    this.getBase64(file).then(
+      data => this.setState({file: data})
+    )
+    .catch(err => console.log(err));
+    this.setState({
+      filename: file.name
+    })
+  }
+
 
   showTab = () => {
     const { tab, numOfTabs} = this.state;
     var currentTab = this.refs[`tab${this.state.tab}`];
     currentTab.style.display = 'flex';
     var { prevBtn, nextBtn } = this.refs;
+
     if(tab === 1){
       prevBtn.style.display = 'none';
     }
@@ -77,10 +96,10 @@ class TrialKor extends Component{
       this.refs.prevBtn.style.display = 'block';
     }
     if(tab === numOfTabs) {
-      nextBtn.innerHTML = '보내기';
+      nextBtn.innerHTML = 'Send';
     }
     else{
-      nextBtn.innerHTML = '다음';
+      nextBtn.innerHTML = 'Next';
     }
   }
 
@@ -89,7 +108,7 @@ class TrialKor extends Component{
     const {tab} = this.state;
     var currentTab = this.refs[`tab${tab}`];
     if(this.validateForm(currentTab)){
-      this.resetFormColor();      
+      this.resetFormColor();
       currentTab.style.display = 'none';
       if(tab === this.state.numOfTabs){
         this.refs.nextBtn.type = 'submit';
@@ -115,19 +134,12 @@ class TrialKor extends Component{
 
   validateForm = (current) => {
     let inputs = current.getElementsByTagName('input');
-    let file = document.querySelector('#file').value;
     let validInput = true;
     //input validation
     for(let i = 0; i < inputs.length; i++){
       let myInput = inputs[i].value;
       if(myInput === ''){
         this.changeFormColor();
-        inputs[i].placeholder = '빈칸을 채워주세요';
-        //file validation
-        if(this.state.tab === 2 && file === ''){
-          current.querySelector('.fileError').style.display = 'block';
-          document.querySelector('#fileBtn').style.marginBottom = 0;
-        }
         validInput = false;
       }
     }
@@ -136,112 +148,76 @@ class TrialKor extends Component{
       let textarea = current.querySelector('textarea');
       if(textarea.value === ''){
         this.changeFormColor();
-        textarea.placeholder = '빈칸을 채워주세요';
         validInput = false;
       }
     }
     return validInput;
   }
 
-  $grey = '#797979';
-  $lightgrey = '#D9D9D9';
-  $white = 'white';
-
   changeFormColor = () => {
-    const trial = document.querySelector('.trial');
-    trial.style.backgroundColor = this.$white;
-    trial.style.color = this.$grey;
-    const trialTitle = trial.querySelector('.trial__title');
-    trialTitle.style.color = this.$grey;
-    var currentTab = this.refs[`tab${this.state.tab}`];
-    const formInput = currentTab.querySelectorAll('.input');
-    for(let i = 0; i < formInput.length; i++){
-      formInput[i].style.backgroundColor = this.$white;
-      formInput[i].style.color = this.$grey;
-      formInput[i].style.border = `1px solid ${this.$grey}`;
-    }
-    const btn = trial.querySelectorAll('button');
-    for(let i = 0; i < btn.length; i++){
-      btn[i].style.color = this.$grey;
-      btn[i].style.borderColor = this.$grey;
-      btn[i].style.backgroundColor = this.$white;
-    }
-    const fileBtn = trial.querySelector('#fileBtn');
-    fileBtn.style.color = this.$grey;
-    fileBtn.style.borderColor = this.$grey;
-    fileBtn.style.backgroundColor = this.$white;
-    const quote = currentTab.querySelector('.quote');
-    quote.style.color = this.$grey;
+    this.refs.trial.id = 'trialWhite';
+    this.props.whiteBackground();
+    this.props.changeFooterColor();
   }
 
   resetFormColor = () => {
-    const trial = document.querySelector('.trial');
-    trial.style = 'revert';
-    const trialTitle = document.querySelector('.trial__title');
-    trialTitle.style = 'revert';
-    var currentTab = this.refs[`tab${this.state.tab}`];
-    const formInput = currentTab.querySelectorAll('.input');
-    for(let i = 0; i < formInput.length; i++){
-      formInput[i].style = 'revert';
-      formInput[i].placeholder = '';
-    }
-    const btn = trial.querySelectorAll('button');
-    for(let i = 0; i < btn.length; i++){
-      btn[i].style = 'revert';
-    }
-    const startBtn = trial.querySelector('.trial__startBtn');
-    startBtn.style.display = 'none';
-    const fileBtn = trial.querySelector('#fileBtn');
-    fileBtn.style = 'revert';
-    const fileError = trial.querySelector('.fileError');    
-    fileError.style.display = 'none';
-    const quote = currentTab.querySelector('.quote');
-    quote.style.color = this.$white;
+    this.refs.trial.id = 'trialBlack';
+    this.props.blackBackground();
+    this.props.changeFooterColor();
   }
 
   showForm = () => {
-    document.querySelector('.trial__intro').style.display = 'none';
-    document.querySelector('.trial__startBtn').style.display = 'none';
-    document.querySelector('.trial__description').style.display = 'block';
-    document.querySelector('.trial__form').style.display = 'flex';
+    window.scrollTo(0, 0);
+    const trial = this.refs.trial;
+    trial.querySelector('.trial__intro').style.display = 'none';
+    trial.querySelector('.trial__startBtn').style.display = 'none';
+    trial.querySelector('.trial__form').style.display = 'flex';
+    if(window.innerWidth >= 1024){
+      this.refs.studentWorkTablet.style.display = 'block';
+    }
   }
 
   render(){
 
     return(
-      <div className='trial'>
-        <h3 className='trial__title'>무료 피드백 체험</h3>
-        <h4 className='trial__intro'>
-          포트폴리오는 아티스트의 실력과 창의력 뿐만이 아니라 아티스트의 성향도 보여줍니다.
-          알다(RDA)는 당신을 더 알아가고 싶습니다. 포트폴리오를 보내주시면 무료 피드백을 드립니다.</h4>
-        <button onClick={this.showForm} className='trial__startBtn'>무료 피드백</button>
-        <h4 className='trial__description'>
-          첫 이용자만 1회 무료 <br/>
-          작품 3개까지 가능 <br/>
-          <span id='price'>(가격은 $250/작품 입니다)</span>
-        </h4>
+      <div className='trial' id='trialBlack' ref='trial'>
+        <div className='trial__intro'>
+          <h2 className='trial__intro--title'>무료 피드백 체험</h2>
+          <h4 className='trial__intro--description'>
+            포트폴리오는 아티스트의 실력과 창의력 뿐만이 아니라 아티스트의 성향도 보여줍니다.
+            알다(RDA)는 당신을 더 알아가고 싶습니다. 포트폴리오를 보내주시면 무료 피드백을 드립니다.</h4>
+          <button onClick={this.showForm} className='trial__startBtn'>Free Feedback</button>
+        </div>
         <form onSubmit={this.formSubmit} className='trial__form' ref='trialForm'>
+          <h2 className='trial__form--title'>Get Free Feedback</h2>
+          {/* <h4 className='trial__form--description'>
+            Free for first visitors only <br/>
+            Up to 3 art pieces <br/>
+            <span id='price'>(Original price is $250/per piece)</span>
+          </h4> */}
           <div className='trial__form--tab' ref='tab1'>
+            <label>성</label>  
+            <input className='input' ref='trialInput' type='text' name='firstname' placeholder='THIS FIELD IS REQUIRED'/> 
             <label>이름</label>  
-            <input className='input' type='text' name='name'/> 
-            <label>연락처</label>
-            <input className='input' type='phone' name='phone'/>
+            <input className='input' ref='trialInput' type='text' name='lastname' placeholder='THIS FIELD IS REQUIRED'/> 
+            <label>전화번호</label>
+            <input className='input' ref='trialInput' type='phone' name='phone' placeholder='THIS FIELD IS REQUIRED'/>
             <label>이메일</label>
-            <input className='input' type='email' name='email'/>
+            <input className='input' ref='trialInput' type='email' name='email' placeholder='THIS FIELD IS REQUIRED'/>
             <img src='../assets/images/studentwork1.png' alt='studentwork1'/> 
-            <h4 className='quote'>RDA는 당신과 함께합니다. 원하시는 학교에 들어갈 수 있도록 도와드리겠습니다.</h4>
           </div>
           <div className='trial__form--tab' ref='tab2'>
-            <label>File</label>
-            <input className='input' id='file' type="file" name="userfile" onChange={this.uploadFile}/>
+            <label>파일</label>
+            <input className='input' ref='trialInput' id='file' type="file" name="userfile" onChange={this.uploadFile}/>
             <label id='fileBtn' htmlFor='file'>파일 업로드</label>
-            <h3 className='fileError'>파일 업로드 해주세요</h3>
+            <h4 id='filename'>{this.state.filename}</h4>
+            <h2 className='fileError'>파일을 업로드 해주세요</h2>
             <label>제목</label>  
-            <input className='input' type='text' name='title'/> 
+            <input className='input' ref='trialInput' type='text' name='title' placeholder='THIS FIELD IS REQUIRED'/> 
             <label>재료*</label>  
-            <input className='input' type='text' name='medium'/>
+            <input className='input' ref='trialInput' type='text' name='medium' placeholder='THIS FIELD IS REQUIRED'/>
             <label>작품 설명**</label>  
-            <textarea className='input' id='statement' name='statement'></textarea>
+            <textarea className='input' ref='trialInput' id='statement' name='statement' placeholder='THIS FIELD IS REQUIRED'></textarea>
             <h5>최대 50 글자</h5>
             <div id='medium'>
               <h2>재료</h2>
@@ -252,13 +228,14 @@ class TrialKor extends Component{
               <p>작품 영감이나 설명을 의미합니다. 간단하게 한 두 문장이면 충분합니다.</p>
             </div>
             <img src='../assets/images/studentwork2.png' alt='studentwork2'/>   
-            <h4 className='quote'>RDA는 당신과 함께합니다. 원하시는 학교에 들어갈 수 있도록 도와드리겠습니다.</h4>
           </div>
+          <h4 className='trial__form--quote'>RDA는 당신과 함께합니다. 원하시는 학교에 들어갈 수 있도록 도와드리겠습니다.</h4>
           <div className='trial__form--buttons'>
             <button type='button' className='prevBtn' ref='prevBtn' onClick={this.prevTab}>이전</button>
             <button type='button' className='nextBtn' ref='nextBtn' onClick={this.nextTab}>다음</button>            
           </div>
         </form>
+      <img className='trial__studentWork' ref='studentWorkTablet' src={`../assets/images/studentwork${this.state.tab}.png`} alt='studentwork1'/>
       </div>
     )
   }

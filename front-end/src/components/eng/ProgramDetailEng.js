@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import '../../styles/program.scss';
+import '../../styles/programDetail.scss';
 
-export default class ProgramEng extends Component {
+export default class ProgramDetailEng extends Component {
 
   componentDidMount(){
     window.scrollTo(0, 0);
@@ -12,12 +12,12 @@ export default class ProgramEng extends Component {
   
   render(){    
     return(
-      <div className='program'>
-        <div className='program__title'>
+      <div className='programDetail'>
+        <div className='programDetail__title'>
           <h1>RDA <section>프로그램</section></h1>
           <h1>그래픽 디자인</h1>
         </div>
-        <div className='program__schools'>
+        <div className='programDetail__schools'>
           <h3>지원 가능 학교</h3>
           <ul>
             <li><strong>OCAD</strong> University</li>
@@ -30,7 +30,7 @@ export default class ProgramEng extends Component {
             <li><strong>Centennial</strong> College</li>
           </ul>
         </div>
-        <div className='program__jobs'>
+        <div className='programDetail__jobs'>
           <h3>가능 직업군</h3>
           <ul id='jobs-mobile'>
             <li>그래픽 디자이너 / 패키지 디자이너</li>
@@ -47,7 +47,7 @@ export default class ProgramEng extends Component {
             <li>웹/앱 디자이너 / 시각 디자이너 / 비주얼 아티스트</li>
           </ul>
         </div>
-        <div className='program__class'>
+        <div className='programDetail__class'>
           <h3>RDA 수업 목표</h3>
           <p>토론토 내 그래픽 디자이너들은 타 직종에 비해 더 넓은 직업군에서 일 할 기회를얻을 수 있습니다. 
             하지만 그만큼 졸업 후에 현업에서 요구하는 실제적인 스킬과 개념적인 부분은 미리 확실히 습득하지 못하면, 
@@ -56,27 +56,27 @@ export default class ProgramEng extends Component {
             개개인에 맞춘 단계별 학습 구조와 각 단계별로 최적화된 담당 선생님들은, 1:1 그 이상의 효율을 기대합니다. 
             RDA는 학생의 대학/컬리지 입시 포트폴리오 합격은 물론, 더 먼 미래까지도 학생과 부모님의 입장에서 봅니다.</p>
         </div>
-        <div className='program__curriculum'>
+        <div className='programDetail__curriculum'>
           <h3>기초 수업 커리큘럼</h3>
-          <div className='program__curriculum--item'>
+          <div className='programDetail__curriculum--item'>
             <h4 className='curriculumStep'>기초 포트폴리오</h4>
             <h4>기초 포트폴리오 색감 / 형태 / 명암 / 투시 / 구도 / 라이프드로잉 / 발상.연상법</h4>
           </div>
           <img src='../assets/icons/triangle-arrow.png'/>
-          <div className='program__curriculum--item'>
+          <div className='programDetail__curriculum--item'>
             <h4 className='curriculumStep'>어도비 그래픽 프로그램</h4>
             <h4>포토샵 / 일러스트레이션 / 인디자인 / 프리미어 프로 / 어도비XD</h4>
           </div>
           <img src='../assets/icons/triangle-arrow.png'/>
-          <div className='program__curriculum--item'>
+          <div className='programDetail__curriculum--item'>
             <h4 className='curriculumStep'>서양 예술.디자인 역사</h4>
           </div>
           <img src='../assets/icons/triangle-arrow.png'/>
-          <div className='program__curriculum--item'>
+          <div className='programDetail__curriculum--item'>
             <h4 className='curriculumStep'>디자인 인문학.철학</h4>
           </div>
           <img src='../assets/icons/triangle-arrow.png'/>
-          <div className='program__curriculum--item'>
+          <div className='programDetail__curriculum--item'>
             <h4 className='curriculumStep'>컬리지.대학 선행반 / 취업 포트폴리오 / 성인 아트워크</h4>
           </div>
         </div>

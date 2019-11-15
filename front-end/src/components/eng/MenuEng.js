@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import '../../styles/menu.scss';
 
 export default class MenuEng extends Component {
+
   render(){
     const { menuOpen, clickMenu } = this.props;
 

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import '../../styles/main.scss';
 export default class MainEng extends Component {
   componentDidMount(){
-    document.querySelector('.App').style = 'revert';
+    this.props.whiteBackground();
   }
 
   toAbout = () => {
@@ -52,11 +52,6 @@ export default class MainEng extends Component {
           <button onClick={this.toTrial}>Free Trial</button>
           <h2 className='main__trial--welcome'>Welcome to RDA</h2>
         </div>
-        {/* <footer>
-            <h5>Copyright © 2019 RDA All rights reserved.</h5>
-            <h5 className='credit'>Code by Koeun Lee</h5>
-            <h5 className='credit'>Design by Luke Jung</h5>
-        </footer> */}
       </div>
     )
   }

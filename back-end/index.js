@@ -3,9 +3,8 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 var app = express();
  
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser({limit: '5mb'}));
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '5mb'}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cors({
   origin: 'https://rda-toronto.netlify.com'

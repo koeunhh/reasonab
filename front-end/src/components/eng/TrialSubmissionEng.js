@@ -4,7 +4,7 @@ import '../../styles/trialSubmission.scss';
 export default class TrialSubmissionEng extends Component {
   
   componentDidMount(){
-    document.querySelector('.content').style = 'revert';
+    this.props.whiteBackground();
   }
   
   render(){    

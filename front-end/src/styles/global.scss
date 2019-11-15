@@ -40,7 +40,7 @@ button {
 }
 
 @mixin pagePadding {
-  padding: 44px 3rem 30px;
+  padding: 44px 4rem 30px;
 
   @media (min-width: $tablet) {
     padding: 44px 8rem;
@@ -52,8 +52,8 @@ button {
 }
 
 @mixin pageSidePadding {
-  padding-right: 5rem;
-  padding-left: 5rem;
+  padding-right: 4rem;
+  padding-left: 4rem;
 
   @media (min-width: $tablet) {
     padding-right: 8rem;
@@ -66,13 +66,13 @@ h1 {
 }
 
 h2 {
-  font-size: 21px;
-
+  font-size: 22px;
+  
   @media (min-width: $tablet) {
-    font-size: 24px;
+    font-size: 26px;
   }
   @media (min-width: $desktop) {
-    font-size: 28px;
+    font-size: 27px;
   }
 }
 
@@ -82,14 +82,7 @@ label {
 }
 
 h3 {
-  font-size: 22px;
-  
-  @media (min-width: $tablet) {
-    font-size: 26px;
-  }
-  @media (min-width: $desktop) {
-    font-size: 27px;
-  }
+  font-size: 18px;
 }
 
 h4 {
