@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
 import '../styles/nav.scss';
-
 class Nav extends Component{
 
   componentDidMount(){
@@ -55,16 +54,17 @@ class Nav extends Component{
 
     var menuImg;
     if(menuOpen){
-      menuImg = '../assets/icons/x-white.svg';
+      menuImg = '/assets/icons/x-white.svg';
     }
     else{
-      menuImg = '../assets/icons/menu-white.svg';
+      menuImg = '/assets/icons/menu-white.svg';
     }
 
     return(
       <nav className='nav' ref='nav'>
         <img className='nav__menu' onClick={clickMenu} src={menuImg} alt='menu'/>
-        <img className='nav__logo' onClick={this.goHome} src='../assets/icons/logo-white.svg' alt='logo'/>
+        <img className='nav__logo' onClick={this.goHome} src='/assets/icons/logo-white.svg' alt='logo'/>
+        {/* <div className='nav__logo' onClick={this.goHome}> {logo} </div> */}
         <div className='navEng nav__desktop'>
           <Link to='/en/about'>About</Link>
           <Link to='/en/program'>Program</Link>

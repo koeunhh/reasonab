@@ -179,10 +179,12 @@ class TrialEng extends Component{
 
   render(){
 
+    const { tab } = this.state;
+
     return(
       <div className='trial' id='trialBlack' ref='trial'>
         <div className='trial__intro'>
-          <h2 className='trial__intro--title'>Get Free Feedback</h2>
+          <h1 className='trial__intro--title'>Get Free Feedback</h1>
           <h4 className='trial__intro--description'>
             Portfolio is a way to showcase your skills and creativity. 
             We also believe that it is a reflection of your personality.
@@ -237,7 +239,7 @@ class TrialEng extends Component{
             <button type='button' className='nextBtn' ref='nextBtn' onClick={this.nextTab}>Next</button>            
           </div>
         </form>
-      <img className='trial__studentWork' ref='studentWorkTablet' src={`../assets/images/studentwork${this.state.tab}.png`} alt='studentwork1'/>
+      <img className={`trial__studentWork${tab}`} ref='studentWorkTablet' src={`/assets/images/studentwork${tab}.png`} alt={`studentwork${tab}`}/>
       </div>
     )
   }

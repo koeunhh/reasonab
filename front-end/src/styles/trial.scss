@@ -88,10 +88,6 @@ $lightgrey: #D9D9D9;
     color: $grey;
     border-color: $grey;
   }
-
-  // #fileBtn {
-  //   margin-bottom: 0;
-  // }
 }
 
 
@@ -118,6 +114,13 @@ $lightgrey: #D9D9D9;
       color: white;
       margin: 0 0 13px;
       font-weight: normal;
+      font-size: 25px;
+      @media (min-width: $tablet) {
+        font-size: 30px;
+      }
+      @media (min-width: $desktop) {
+        font-size: 40px;
+      }
     }
   
     &--description {
@@ -125,9 +128,13 @@ $lightgrey: #D9D9D9;
       margin-bottom: 32px;
   
       @media (min-width: $tablet) {
+        font-size: 16px;
+        line-height: 22px;
         width: 70%; 
       }
       @media (min-width: $desktop) {
+        font-size: 18px;
+        line-height: 24px;
         width: 60%; 
       }
     }
@@ -281,9 +288,15 @@ $lightgrey: #D9D9D9;
     }
   }
 
-  &__studentWork {
+  &__studentWork1 {
     display: none;
     width: 500px;
-    height: 600px;
+    height: 610px;
+  }
+
+  &__studentWork2 {
+    display: none;
+    width: 500px;
+    height: 650px;
   }
 }

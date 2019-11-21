@@ -42,52 +42,52 @@ export default class AboutEng extends Component {
         </div>
         <div className='about__teachers'>
           <div className='about__teachers--each'>
-            <img src='../assets/images/heesun.jpg' alt='heesun'/>
+            <img src='/assets/images/heesun.jpg' alt='heesun'/>
             <h5>Luke Jung</h5>
             <h5>Designer</h5>
           </div>
           <div className='about__teachers--each'>
-            <img src='../assets/images/heesun.jpg' alt='heesun'/>
+            <img src='/assets/images/heesun.jpg' alt='heesun'/>
             <h5>Luke Jung</h5>
             <h5>Designer</h5>
           </div>
           <div className='about__teachers--each'>
-            <img src='../assets/images/heesun.jpg' alt='heesun'/>
+            <img src='/assets/images/heesun.jpg' alt='heesun'/>
             <h5>Luke Jung</h5>
             <h5>Designer</h5>
           </div>
           <div className='about__teachers--each'>
-            <img src='../assets/images/heesun.jpg' alt='heesun'/>
+            <img src='/assets/images/heesun.jpg' alt='heesun'/>
             <h5>Luke Jung</h5>
             <h5>Designer</h5>
           </div>
           <div className='about__teachers--each'>
-            <img src='../assets/images/heesun.jpg' alt='heesun'/>
+            <img src='/assets/images/heesun.jpg' alt='heesun'/>
             <h5>Luke Jung</h5>
             <h5>Designer</h5>
           </div>
           <div className='about__teachers--each'>
-            <img src='../assets/images/heesun.jpg' alt='heesun'/>
+            <img src='/assets/images/heesun.jpg' alt='heesun'/>
             <h5>Luke Jung</h5>
             <h5>Designer</h5>
           </div>
           <div className='about__teachers--each'>
-            <img src='../assets/images/heesun.jpg' alt='heesun'/>
+            <img src='/assets/images/heesun.jpg' alt='heesun'/>
             <h5>Luke Jung</h5>
             <h5>Designer</h5>
           </div>
           <div className='about__teachers--each'>
-            <img src='../assets/images/heesun.jpg' alt='heesun'/>
+            <img src='/assets/images/heesun.jpg' alt='heesun'/>
             <h5>Luke Jung</h5>
             <h5>Designer</h5>
           </div>
           <div className='about__teachers--each'>
-            <img src='../assets/images/heesun.jpg' alt='heesun'/>
+            <img src='/assets/images/heesun.jpg' alt='heesun'/>
             <h5>Luke Jung</h5>
             <h5>Designer</h5>
           </div>
           <div className='about__teachers--each'>
-            <img src='../assets/images/heesun.jpg' alt='heesun'/>
+            <img src='/assets/images/heesun.jpg' alt='heesun'/>
             <h5>Luke Jung</h5>
             <h5>Designer</h5>
           </div>

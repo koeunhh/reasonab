@@ -12,7 +12,8 @@ app.use(cors({
 }));
  
 app.use('/trial', require('./routes/sendEmail'));
- 
+app.use('/program', require('./routes/program'));
+
 const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, () => {

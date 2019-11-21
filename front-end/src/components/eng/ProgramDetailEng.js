@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import '../../styles/programDetail.scss';
-
 export default class ProgramDetailEng extends Component {
 
   componentDidMount(){
@@ -62,20 +61,20 @@ export default class ProgramDetailEng extends Component {
             <h4 className='curriculumStep'>기초 포트폴리오</h4>
             <h4>기초 포트폴리오 색감 / 형태 / 명암 / 투시 / 구도 / 라이프드로잉 / 발상.연상법</h4>
           </div>
-          <img src='../assets/icons/triangle-arrow.png'/>
+          <img src='/assets/icons/triangle-arrow.png' alt='arrow'/>
           <div className='programDetail__curriculum--item'>
             <h4 className='curriculumStep'>어도비 그래픽 프로그램</h4>
             <h4>포토샵 / 일러스트레이션 / 인디자인 / 프리미어 프로 / 어도비XD</h4>
           </div>
-          <img src='../assets/icons/triangle-arrow.png'/>
+          <img src='/assets/icons/triangle-arrow.png' alt='arrow'/>
           <div className='programDetail__curriculum--item'>
             <h4 className='curriculumStep'>서양 예술.디자인 역사</h4>
           </div>
-          <img src='../assets/icons/triangle-arrow.png'/>
+          <img src='/assets/icons/triangle-arrow.png' alt='arrow'/>
           <div className='programDetail__curriculum--item'>
             <h4 className='curriculumStep'>디자인 인문학.철학</h4>
           </div>
-          <img src='../assets/icons/triangle-arrow.png'/>
+          <img src='/assets/icons/triangle-arrow.png' alt='arrow'/>
           <div className='programDetail__curriculum--item'>
             <h4 className='curriculumStep'>컬리지.대학 선행반 / 취업 포트폴리오 / 성인 아트워크</h4>
           </div>

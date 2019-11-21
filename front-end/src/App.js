@@ -10,6 +10,7 @@ import AboutEng from './components/eng/AboutEng';
 import AboutKor from './components/kor/AboutKor';
 import ProgramEng from './components/eng/ProgramEng';
 import ProgramKor from './components/kor/ProgramKor';
+import ProgramDetailEng from './components/eng/ProgramDetailEng';
 import TrialEng from './components/eng/TrialEng';
 import TrialKor from './components/kor/TrialKor';
 import TrialSubmissionEng from './components/eng/TrialSubmissionEng';
@@ -108,8 +109,10 @@ export default class App extends Component {
               <Route exact path='/kor/' render={props => {return <MainKor {...props} whiteBackground={this.whiteBackground}/>}}/>
               <Route path='/en/about' render={props => {return <AboutEng {...props} changeFooterColor={this.changeFooterColor} whiteBackground={this.whiteBackground}/>}} />
               <Route path='/kor/about' render={props => {return <AboutKor {...props} changeFooterColor={this.changeFooterColor} whiteBackground={this.whiteBackground}/>}} />
-              <Route path='/en/program' render={props => {return <ProgramEng {...props} changeFooterColor={this.changeFooterColor} whiteBackground={this.whiteBackground}/>}} />
-              <Route path='/kor/program' render={props => {return <ProgramKor {...props} changeFooterColor={this.changeFooterColor} whiteBackground={this.whiteBackground}/>}} />
+              <Route exact path='/en/program' render={props => {return <ProgramEng {...props} changeFooterColor={this.changeFooterColor} whiteBackground={this.whiteBackground}/>}} />
+              <Route exact path='/kor/program' render={props => {return <ProgramKor {...props} changeFooterColor={this.changeFooterColor} whiteBackground={this.whiteBackground}/>}} />
+              <Route path='/en/program/graphicDesign' render={props => {return <ProgramDetailEng {...props} changeFooterColor={this.changeFooterColor} whiteBackground={this.whiteBackground}/>}} />
+              <Route path='/en/program/animation' render={props => {return <ProgramDetailEng {...props} changeFooterColor={this.changeFooterColor} whiteBackground={this.whiteBackground}/>}} />
               <Route exact path='/en/trial' render={props => {return <TrialEng {...props} changeFooterColor={this.changeFooterColor} blackBackground={this.blackBackground} whiteBackground={this.whiteBackground}/>}} />
               <Route exact path='/kor/trial' render={props => {return <TrialKor {...props} changeFooterColor={this.changeFooterColor} blackBackground={this.blackBackground} whiteBackground={this.whiteBackground}/>}} />
               <Route path='/en/trial/formSubmitted' render={props => {return <TrialSubmissionEng {...props} whiteBackground={this.whiteBackground}/>}}/>
