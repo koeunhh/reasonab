@@ -18,7 +18,8 @@ class ProgramEng extends Component {
     this.props.whiteBackground();
     this.props.changeFooterColor();
 
-    axios.get('http://localhost:8080/program')
+    // axios.get('http://localhost:8080/program')
+    axios.get('https://rda-toronto.herokuapp.com/program')
     .then(res => {
         this.setState({program: res.data});
       })
