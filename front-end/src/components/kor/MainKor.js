@@ -20,7 +20,7 @@ export default class MainEng extends Component {
 
   render(){
     return(
-      <div className='main'>
+      <div className='main' lang='ko'>
         <div className='main__about'>
           <div className='main__about--logo'>
             <img src='../assets/icons/mainlogo-black.svg' alt='logo'/>
