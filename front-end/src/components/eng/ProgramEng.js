@@ -43,7 +43,11 @@ class ProgramEng extends Component {
           <div className='program__each' id={each.oddEven} key={each.id}>
             <h1 className='program__each--title'>{each.title}</h1>
             <h4 className='program__each--subtitle'>{each.subtitle}</h4>
-            <h5 className='program__each--items'>{each.items}</h5>
+            {
+              each.items.map(item => 
+                <h5 className='program__each--items' key={each.items.indexOf(item)}>{item}</h5>
+              )
+            }
             <button id={each.id} onClick={this.toProgram}>자세히 보기</button>
             <img src={each.img} alt={each.id}/>
           </div>

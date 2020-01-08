@@ -7,7 +7,7 @@ app.use(bodyParser.json({limit: '5mb'}));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cors({
-  origin: 'https://rda-toronto.netlify.com'
+  origin: 'https://www.rda-toronto.com'
   // origin: 'http://localhost:3000'
 }));
  
