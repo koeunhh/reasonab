@@ -117,7 +117,7 @@ export default class App extends Component {
               <Route exact path='/kor/trial' render={props => {return <TrialKor {...props} changeFooterColor={this.changeFooterColor} blackBackground={this.blackBackground} whiteBackground={this.whiteBackground}/>}} />
               <Route path='/en/trial/formSubmitted' render={props => {return <TrialSubmissionEng {...props} whiteBackground={this.whiteBackground}/>}}/>
               <Route path='/kor/trial/formSubmitted' render={props => {return <TrialSubmissionKor {...props} whiteBackground={this.whiteBackground}/>}}/>
-              <Redirect exact from='/' to='/en/'/>
+              <Redirect exact from='/' to='/kor/'/>
             </Switch>
             <footer>
               <h5 className='copyright'>Copyright © 2019 RDA All rights reserved.</h5>

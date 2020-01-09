@@ -45,7 +45,7 @@ export default class MainEng extends Component {
         </div>
         <div className='main__trial'>
           <h2 className='main__trial--title'>
-            우리는 학생들을 위해 기준 그 이상까지 갑니다
+            RDA는 학생들을 위해 기준 그 이상까지 갑니다
           </h2>
           <h4 className='main__trial--sub'>우리는 당신의 열정을 응원합니다</h4>
           <img className='main__trial--img' src='../assets/images/mainImg3.png' alt='mainImg2'/>
