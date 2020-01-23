@@ -63,8 +63,13 @@ class Nav extends Component{
   }
 
   render(){
-    const { menuOpen, clickMenu } = this.props;
+    const { menuOpen, clickMenu, checkLanguage } = this.props;
     const {about, program, trial, language} = this.state;
+
+    let lang = checkLanguage();
+    const aboutPath = `/${lang}/about`;
+    const programPath = `/${lang}/program`;
+    const trialPath = `/${lang}/trial`;
 
     var menuImg;
     if(menuOpen){
@@ -78,21 +83,12 @@ class Nav extends Component{
       <nav className='nav' ref='nav'>
         <img className='nav__menu' onClick={clickMenu} src={menuImg} alt='menu'/>
         <img className='nav__logo' onClick={this.goHome} src='/assets/icons/logo-white.svg' alt='logo'/>
-        {/* <div className='nav__logo' onClick={this.goHome}> {logo} </div> */}
         <div className='navEng nav__desktop'>
-          <Link to='/en/about'>{about}</Link>
-          <Link to='/en/program'>{program}</Link>
-          <Link to='/en/trial'>{trial}</Link>
+          <Link to={aboutPath}>{about}</Link>
+          <Link to={programPath}>{program}</Link>
+          <Link to={trialPath}>{trial}</Link>
         </div>
-        {/* <div className='navKor nav__desktop'>
-          <Link to='/kor/about'>RDA소개</Link>
-          <Link to='/kor/program'>프로그램</Link>
-          <Link to='/kor/trial'>무료체험</Link>
-        </div> */}
-        <h4 className='nav__lang' onClick={this.switchLanguage}>
-          {language}
-          {/* <div className={`eng nav__lang`}>ENG</div> */}
-        </h4>
+        <h4 className='nav__lang' onClick={this.switchLanguage}>{language}</h4>
       </nav>
     )
   }
