@@ -70,14 +70,15 @@ $grey: #6F6F6F;
     button {
       width: 110px;
       height: 35px;
-      margin: 15px 0 30px;
+      margin: 15px 0 0;
     }
 
     img {
-      width: 190px;
+      width: 100%;
 
       @media (min-width: $tablet) {
         width: 300px;
+        margin: 30px 0;
       }
       @media (min-width: $desktop) {
         width: 500px;

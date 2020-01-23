@@ -4,12 +4,18 @@ import { Link, withRouter } from 'react-router-dom';
 import '../styles/nav.scss';
 class Nav extends Component{
 
-  componentDidMount(){
-    this.navLanguage();
+  constructor(props){
+    super(props);
+    this.state = {
+        language: '',
+        about: '',
+        program: '',
+        trial: ''
+      }
   }
 
-  componentDidUpdate(){
-    this.navLanguage();
+  componentDidMount(){
+    this.setCurrentLanguage();
   }
 
   goHome = () => {
@@ -19,38 +25,46 @@ class Nav extends Component{
     this.props.history.push(path);
   }
 
-  navLanguage = () => {
-    let path = window.location.pathname;
-    const lang = path.split('/')[1];
+  setCurrentLanguage(){
+    const lang = this.props.checkLanguage();
     if(lang === 'en'){
-      document.querySelector('.navEng').style = 'revert';
-      document.querySelector('.navKor').style.display = 'none';
+      this.setState({
+        language: 'English',
+        about: 'About',
+        program: 'Program',
+        trial: 'Trial'
+      })
     }
     else if(lang === 'kor'){
-      document.querySelector('.navKor').style = 'revert';
-      document.querySelector('.navEng').style.display = 'none';
+      this.setState({
+        language: 'Korean',
+        about: 'RDA소개',
+        program: '프로그램',
+        trial: '무료 피드백'
+      })
     }
   }
 
   switchLanguage = () => {
     this.props.closeMenu();
+    const lang = this.props.checkLanguage();
     let path = window.location.pathname;
-    const lang = path.split('/')[1];
+    let pathArray = path.split('/');
     if(lang === 'en'){
-      document.querySelector('.kor').style.display = 'none';
-      document.querySelector('.eng').style.display = 'block';
-      path = path.replace('/en/', '/kor/');
+      pathArray[1] = 'kor';
+      path = pathArray.join('/');
     }
     else if(lang === 'kor'){
-      document.querySelector('.eng').style.display = 'none';
-      document.querySelector('.kor').style.display = 'block';
-      path = path.replace('/kor/', '/en/');
+      pathArray[1] = 'en';
+      path = pathArray.join('/');
     }
     this.props.history.push(path);
+    this.setCurrentLanguage();
   }
 
   render(){
     const { menuOpen, clickMenu } = this.props;
+    const {about, program, trial, language} = this.state;
 
     var menuImg;
     if(menuOpen){
@@ -60,24 +74,24 @@ class Nav extends Component{
       menuImg = '/assets/icons/menu-white.svg';
     }
 
-    return(
+    return(      
       <nav className='nav' ref='nav'>
         <img className='nav__menu' onClick={clickMenu} src={menuImg} alt='menu'/>
         <img className='nav__logo' onClick={this.goHome} src='/assets/icons/logo-white.svg' alt='logo'/>
         {/* <div className='nav__logo' onClick={this.goHome}> {logo} </div> */}
         <div className='navEng nav__desktop'>
-          <Link to='/en/about'>About</Link>
-          <Link to='/en/program'>Program</Link>
-          <Link to='/en/trial'>Trial</Link>
+          <Link to='/en/about'>{about}</Link>
+          <Link to='/en/program'>{program}</Link>
+          <Link to='/en/trial'>{trial}</Link>
         </div>
-        <div className='navKor nav__desktop'>
+        {/* <div className='navKor nav__desktop'>
           <Link to='/kor/about'>RDA소개</Link>
           <Link to='/kor/program'>프로그램</Link>
           <Link to='/kor/trial'>무료체험</Link>
-        </div>
-        <h4 onClick={this.switchLanguage}>
-          <div className={`kor nav__lang`}>한글</div>
-          <div className={`eng nav__lang`}>ENG</div>
+        </div> */}
+        <h4 className='nav__lang' onClick={this.switchLanguage}>
+          {language}
+          {/* <div className={`eng nav__lang`}>ENG</div> */}
         </h4>
       </nav>
     )
