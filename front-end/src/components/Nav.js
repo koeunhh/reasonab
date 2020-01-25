@@ -83,12 +83,10 @@ class Nav extends Component{
       <nav className='nav' ref='nav'>
         <img className='nav__menu' onClick={clickMenu} src={menuImg} alt='menu'/>
         <img className='nav__logo' onClick={this.goHome} src='/assets/icons/logo-white.svg' alt='logo'/>
-        <div className='navEng nav__desktop'>
-          <Link to={aboutPath}>{about}</Link>
-          <Link to={programPath}>{program}</Link>
-          <Link to={trialPath}>{trial}</Link>
-        </div>
-        <h4 className='nav__lang' onClick={this.switchLanguage}>{language}</h4>
+        <Link to={aboutPath}>{about}</Link>
+        <Link to={programPath}>{program}</Link>
+        <Link to={trialPath}>{trial}</Link>
+        <button className='nav__lang' onClick={this.switchLanguage}>{language}</button>
       </nav>
     )
   }

@@ -35,27 +35,23 @@
     cursor: pointer;
   }
 
-  &__desktop {
+  a {
+    text-decoration: none;
+    color: white;
     display: none;
 
     @media (min-width: $tablet) {
-      display: flex;
-      width: 50vw;
-      justify-content: space-between;
-      
-      // &.navKor {
-      //   display: none;
-      // }
-  
-      a {
-        text-decoration: none;
-        color: white;
-      }
+      display: block;
     }
   }
 
   &__lang{
-    width: 32px;
     cursor: pointer;
+    width: 100px;
+    height: 26px;
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
   }
 }

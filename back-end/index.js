@@ -11,7 +11,7 @@ app.use(cors({
   origin: 'http://localhost:3000'
 }));
  
-app.use('/program', require('./routes/program'));
+app.use('/content', require('./routes/content'));
 app.use('/trial', require('./routes/sendEmail'));
 
 const PORT = process.env.PORT || 8080;

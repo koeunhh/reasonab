@@ -105,8 +105,8 @@ export default class App extends Component {
                                                     checkLanguage={this.checkLanguage}/>}}/>
           <div className='content' id={this.state.backgroundColor}>
             <Switch>
-              <Route exact path='/en/' render={props => {return <MainEng {...props} whiteBackground={this.whiteBackground}/>}}/>
-              <Route exact path='/kor/' render={props => {return <MainKor {...props} whiteBackground={this.whiteBackground}/>}}/>
+              <Route exact path='/en/' render={props => {return <MainEng {...props} checkLanguage={this.checkLanguage} whiteBackground={this.whiteBackground}/>}}/>
+              <Route exact path='/kor/' render={props => {return <MainKor {...props} checkLanguage={this.checkLanguage} whiteBackground={this.whiteBackground}/>}}/>
               <Route path='/en/about' render={props => {return <AboutEng {...props} changeFooterColor={this.changeFooterColor} whiteBackground={this.whiteBackground}/>}} />
               <Route path='/kor/about' render={props => {return <AboutKor {...props} changeFooterColor={this.changeFooterColor} whiteBackground={this.whiteBackground}/>}} />
               <Route exact path='/en/program' render={props => {return <ProgramEng {...props} changeFooterColor={this.changeFooterColor} whiteBackground={this.whiteBackground}/>}} />

@@ -6,7 +6,30 @@
   line-height: 30px;
 
   button {
-    width: 170px;
+    width: 200px;
+  }
+
+  &__logo{
+    background-color: black;
+    // height: calc(100vh - 44px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+
+    @media (min-width: $tablet) {
+      height: 500px;
+    }
+    @media (min-width: $desktop) {
+      height: 600px;
+    }
+
+    img {
+      height: 60vw;
+  
+      @media (min-width: $tablet) {
+        height: 30vw;
+      }
   }
 
   &__about{
@@ -14,18 +37,7 @@
     flex-direction: column;
     align-items: center;
   
-    &--logo{
-      height: calc(100vh - 44px);
-      display: flex;
-      justify-content: center;
-
-      img {
-        width: 60vw;
     
-        @media (min-width: $tablet) {
-          width: 250px;
-        }
-      }
     }
   
     &--title {
