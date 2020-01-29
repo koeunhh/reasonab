@@ -30,7 +30,9 @@ export default class MainEng extends Component {
 
   getData = () => {
     const lang = this.props.checkLanguage();
-    axios.get('http://localhost:8080/content/main')
+    // axios.get('http://localhost:8080/content/main')
+    
+    axios.get('https://rda-toronto.herokuapp.com/content/main')
     .then(res => {
       this.setState({data: res.data[lang]});
     })

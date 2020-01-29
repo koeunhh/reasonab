@@ -2,7 +2,7 @@
 
 .nav {
   background-color: black;
-  opacity: 0.9;
+  // opacity: 0.9;
   color: white;
 
   position: fixed;
@@ -45,13 +45,26 @@
     }
   }
 
-  &__lang{
-    cursor: pointer;
-    width: 100px;
-    height: 26px;
-    background-color: black;
-    color: white;
-    border: 1px solid white;
-    border-radius: 5px;
+  &__mobileLang {
+    font-weight: bold;
+
+    @media (min-width: $tablet) {
+      display: none;
+    }
+  }
+
+  &__lang {
+    display: none;
+
+    @media (min-width: $tablet) {
+      display: inline-block;
+      cursor: pointer;
+      width: 100px;
+      height: 26px;
+      background-color: black;
+      color: white;
+      border: 1px solid white;
+      border-radius: 5px;
+    }
   }
 }

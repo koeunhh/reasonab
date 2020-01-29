@@ -4,6 +4,11 @@ import {Link} from 'react-router-dom';
 import '../../styles/menu.scss';
 
 export default class MenuKor extends Component {
+
+  componentDidUpdate(){
+    console.log('close');
+  }
+
   render(){
     const { menuOpen, clickMenu } = this.props;
 
@@ -12,8 +17,7 @@ export default class MenuKor extends Component {
       menu = 'menu';
     }
     else{
-      menu = 'closed';
-      
+      menu = 'closed'; 
     }
 
     return(

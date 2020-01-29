@@ -8,6 +8,7 @@ class Nav extends Component{
     super(props);
     this.state = {
         language: '',
+        mobileLang: '',
         about: '',
         program: '',
         trial: ''
@@ -30,6 +31,7 @@ class Nav extends Component{
     if(lang === 'en'){
       this.setState({
         language: 'English',
+        mobileLang: 'ENG',
         about: 'About',
         program: 'Program',
         trial: 'Trial'
@@ -38,6 +40,7 @@ class Nav extends Component{
     else if(lang === 'kor'){
       this.setState({
         language: 'Korean',
+        mobileLang: 'KOR',
         about: 'RDA소개',
         program: '프로그램',
         trial: '무료 피드백'
@@ -64,7 +67,7 @@ class Nav extends Component{
 
   render(){
     const { menuOpen, clickMenu, checkLanguage } = this.props;
-    const {about, program, trial, language} = this.state;
+    const {about, program, trial, language, mobileLang} = this.state;
 
     let lang = checkLanguage();
     const aboutPath = `/${lang}/about`;
@@ -86,6 +89,7 @@ class Nav extends Component{
         <Link to={aboutPath}>{about}</Link>
         <Link to={programPath}>{program}</Link>
         <Link to={trialPath}>{trial}</Link>
+        <h4 className='nav__mobileLang' onClick={this.switchLanguage}>{mobileLang}</h4>
         <button className='nav__lang' onClick={this.switchLanguage}>{language}</button>
       </nav>
     )

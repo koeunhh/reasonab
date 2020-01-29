@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import '../../styles/about.scss';
 
-export default class AboutEng extends Component {
+export default class AboutKor extends Component {
 
   componentDidMount(){
     window.scrollTo(0, 0);
