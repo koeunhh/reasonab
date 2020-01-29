@@ -15,7 +15,7 @@ class Nav extends Component{
       }
   }
 
-  componentWillMount(){
+  componentDidMount(){
     this.setCurrentLanguage();
   }
 
@@ -28,22 +28,22 @@ class Nav extends Component{
 
   setCurrentLanguage(){
     const lang = this.props.checkLanguage();
-    if(lang === 'en'){
-      this.setState({
-        language: 'English',
-        mobileLang: 'ENG',
-        about: 'About',
-        program: 'Program',
-        trial: 'Trial'
-      })
-    }
-    else if(lang === 'kor'){
+    if(lang === 'kor'){
       this.setState({
         language: 'Korean',
         mobileLang: 'KOR',
         about: 'RDA소개',
         program: '프로그램',
         trial: '무료 피드백'
+      })
+    }
+    else if(lang === 'en'){
+      this.setState({
+        language: 'English',
+        mobileLang: 'ENG',
+        about: 'About',
+        program: 'Program',
+        trial: 'Trial'
       })
     }
   }

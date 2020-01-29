@@ -28,7 +28,6 @@ class TrialKor extends Component{
     this.showTab();
     let file = document.querySelector('#file').value;
     const filename = this.state.filename;
-    console.log(filename);
     if(file !== ''){
       document.querySelector('.fileError').style.display = 'none';
       document.querySelector('#fileBtn').style.marginBottom = 0;
@@ -47,8 +46,8 @@ class TrialKor extends Component{
   formSubmit = e => {
     e.preventDefault();
 
-    // axios.post('http://localhost:8080/trial', {
-    axios.post('https://rda-toronto.herokuapp.com/trial', {
+    // axios.post('http://localhost:8080/trial/', {
+    axios.post('https://rda-toronto.herokuapp.com/trial/', {
       firstname: e.target.firstname.value,
       lastname: e.target.lastname.value,
       phone: e.target.phone.value,

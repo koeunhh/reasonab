@@ -81,7 +81,11 @@ export default class App extends Component {
 
   checkLanguage = () => {
     let path = window.location.pathname;
-    const lang = path.split('/')[1];
+    let lang = path.split('/')[1];
+    if(lang === ''){
+      lang = 'kor'
+    }
+    console.log(lang)
     return lang;
   }
 
