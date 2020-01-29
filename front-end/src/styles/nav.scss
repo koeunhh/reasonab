@@ -1,26 +1,22 @@
 @import './global.scss';
 
 .nav {
-  background-color: black;
-  // opacity: 0.9;
-  color: white;
+  @include pageSidePadding();
 
-  position: fixed;
-  top: 0;
-  z-index: 1;
-  display: flex;
-  padding: 0 3rem;
-  justify-content: space-between;  
-  align-items: center;
+  background-color: black;
+  color: white;
+  // opacity: 0.9;
 
   box-sizing: border-box;
   height: 44px;
   width: 100%;
 
-  @media (min-width: $tablet) {
-    padding-right: 8rem;
-    padding-left: calc(8rem - 10px);
-  }
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;  
+  align-items: center;
 
   &__menu {
     width: 35px;

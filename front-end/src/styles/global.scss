@@ -39,25 +39,25 @@ button {
   font-size: 12px;
 }
 
-@mixin pagePadding {
-  padding: 44px 4rem 30px;
+// @mixin pagePadding {
+//   padding: 44px 4rem 30px;
 
-  @media (min-width: $tablet) {
-    padding: 44px 8rem;
-  }
-}
+//   @media (min-width: $tablet) {
+//     padding: 44px 8rem;
+//   }
+// }
 
-@mixin pageInnerMargin {
-  margin: 2rem;
+@mixin pageTopBtmMargin {
+  margin-top: 44px;
 }
 
 @mixin pageSidePadding {
   padding-right: 4rem;
   padding-left: 4rem;
-
+  
   @media (min-width: $tablet) {
-    padding-right: 8rem;
-    padding-left: 8rem;
+    padding-right: 6rem;
+    padding-left: 6rem;
   }
 }
 

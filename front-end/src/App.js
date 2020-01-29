@@ -40,10 +40,12 @@ export default class App extends Component {
     let footer = document.querySelector('footer').style;
     let copyright = document.querySelector('.copyright').style;
     if (content === 'blackBackground'){
+      footer.backgroundColor = 'black';
       footer.borderColor = '#9A9A9A';
       copyright.color = 'white';
     }
     else if (content === 'whiteBackground'){
+      footer.backgroundColor = 'white';
       footer.borderColor = '#797979';
       copyright.color = 'black';    
     }
@@ -85,7 +87,6 @@ export default class App extends Component {
     if(lang === ''){
       lang = 'kor'
     }
-    console.log(lang)
     return lang;
   }
 

@@ -16,7 +16,7 @@ export default class AboutKor extends Component {
         <div className='about__detail'>
           <h2>아는만큼 보는 알다는 각 전공별 엄선된 튜터 중심으로 1대 5미만의 소수 정예 수업을 진행합니다.</h2>
           <ul>
-            <li>기초 테크닉</li> 
+            <li>Basic Technique</li> 
             <li>그래픽 디자인</li>
             <li>애니메이션/일러스트레이션</li>
             <li>순수 예술/조형</li>

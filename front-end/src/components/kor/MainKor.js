@@ -17,21 +17,22 @@ export default class MainKor extends Component {
   }
 
   toAbout = () => {
-    this.props.history.push('/kor/about');
+    this.props.history.push('/en/about');
   }
 
   toProgram = () => {
-    this.props.history.push('/kor/program');
+    this.props.history.push('/en/program');
   }
 
   toTrial = () => {
-    this.props.history.push('/kor/trial');
+    this.props.history.push('/en/trial');
   }
 
   getData = () => {
     const lang = this.props.checkLanguage();
-    // axios.get('http://localhost:8080/content/main/')
-    axios.get('https://rda-toronto.herokuapp.com/content/main/')
+    
+    // axios.get('http://localhost:8080/content/main')
+    axios.get('https://rda-toronto.herokuapp.com/content/main')
     .then(res => {
       this.setState({data: res.data[lang]});
     })
@@ -41,47 +42,23 @@ export default class MainKor extends Component {
   }
 
   render(){
-    let {about, program, trial} = this.state.data;
-    
-    if(about === undefined){
-      return null;
-    }
-    if(program === undefined){
-      return null;
-    }
-    if(trial === undefined){
-      return null;
-    }
+    const {data} = this.state;
 
     return(
       <div className='main'>
         <div className='main__logo'>
           <img src='/assets/icons/mainlogo-white.svg' alt='logo'/>
         </div>
-        <div className='main__about'>
-          <img className='main__about--img' src='/assets/images/mainImg1.svg' alt='mainImg1'/>
-          <div>
-            <h2>{about.title}</h2>
-            <h4>{about.sub}</h4>
-            <button onClick={this.toAbout}>{about.btn}</button>
-          </div>
-        </div>        
-        <div className='main__program'>
-          <img className='main__program--img' src='/assets/images/mainImg2.svg' alt='mainImg2'/>
-          <div>
-            <h2>{program.title}</h2>
-            <h4>{program.sub}</h4>
-            <button onClick={this.toAbout}>{program.btn}</button>
-          </div>
-        </div>   
-        <div className='main__trial'>
-          <img className='main__trial--img' src='/assets/images/mainImg3.svg' alt='mainImg3'/>
-          <div>
-            <h2>{trial.title}</h2>
-            <h4>{trial.sub}</h4>
-            <button onClick={this.toAbout}>{trial.btn}</button>
-          </div>
-        </div>
+        {data.map(each => 
+          <div className={`main__${each.section}`} key={data.indexOf(each)}>
+            <img className={`main__${each.section}--img`} src={each.img} alt={each.imgAlt}/>
+            <div>
+              <h2>{each.title}</h2>
+              <h4>{each.sub}</h4>
+              <button onClick={this.toAbout}>{each.btn}</button>
+            </div>
+          </div>  
+        )} 
         <img src='/assets/images/mainImg4.svg' alt='mainImg4'/>
         <h2>Welcome to RDA</h2>   
       </div>

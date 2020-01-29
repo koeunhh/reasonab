@@ -27,7 +27,6 @@ class TrialKor extends Component{
   componentDidUpdate(){
     this.showTab();
     let file = document.querySelector('#file').value;
-    const filename = this.state.filename;
     if(file !== ''){
       document.querySelector('.fileError').style.display = 'none';
       document.querySelector('#fileBtn').style.marginBottom = 0;
@@ -46,8 +45,8 @@ class TrialKor extends Component{
   formSubmit = e => {
     e.preventDefault();
 
-    // axios.post('http://localhost:8080/trial/', {
-    axios.post('https://rda-toronto.herokuapp.com/trial/', {
+    // axios.post('http://localhost:8080/trial', {
+    axios.post('https://rda-toronto.herokuapp.com/trial', {
       firstname: e.target.firstname.value,
       lastname: e.target.lastname.value,
       phone: e.target.phone.value,
@@ -190,11 +189,6 @@ class TrialKor extends Component{
         </div>
         <form onSubmit={this.formSubmit} className='trial__form' ref='trialForm'>
           <h2 className='trial__form--title'>무료 피드백 체험</h2>
-          {/* <h4 className='trial__form--description'>
-            Free for first visitors only <br/>
-            Up to 3 art pieces <br/>
-            <span id='price'>(Original price is $250/per piece)</span>
-          </h4> */}
           <div className='trial__form--tab' ref='tab1'>
             <label>성</label>  
             <input className='input' ref='trialInput' type='text' name='firstname' placeholder='빈 칸을 채워주세요'/> 

@@ -5,14 +5,13 @@ html {
 
   .App {
     font-size: 1.6rem;
-    font-family: 'GothamMedium';
+    // font-family: 'GothamMedium';
     
     .hide{
       display: none;
     }
     
     .content {
-      @include pagePadding;
       position: relative;
       min-height: calc(100vh - 64px);
       display: flex;
@@ -20,21 +19,17 @@ html {
       align-items: center;
     }
 
-      #whiteBackground {
-        background-color: white;
-      }
-
-      #blackBackground {
-        background-color: black;
-      }
-
     footer {
       width: 100%;
       text-align: left;
       border-top: 1px solid black;
+      margin-left: 4rem;
+      margin-right: 4rem;
       padding: 15px 5px 0;
   
       @media (min-width: $tablet) {
+        margin-left: 6rem;
+        margin-right: 6rem;
         padding: 25px 8px 0;
       }
 

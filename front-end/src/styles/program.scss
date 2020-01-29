@@ -3,6 +3,8 @@
 $grey: #6F6F6F;
 
 .program {
+  @include pageTopBtmMargin();
+
   width: 100vw;
 
   &__each {

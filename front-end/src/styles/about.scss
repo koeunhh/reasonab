@@ -1,7 +1,10 @@
 @import './global.scss';
 
 .about {
-  @include pageInnerMargin();
+  @include pageTopBtmMargin();
+  @include pageSidePadding();
+  box-sizing: border-box;
+
   width: 100%;
   display: flex;
   flex-direction: column;

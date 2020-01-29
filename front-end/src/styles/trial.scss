@@ -4,6 +4,7 @@ $grey: #797979;
 $lightgrey: #D9D9D9;
 
 #trialBlack {
+  background-color: black;
   color: $lightgrey;
 
   .trial__form {
@@ -44,6 +45,7 @@ $lightgrey: #D9D9D9;
 }
 
 #trialWhite {
+  background-color: white;
   color: $grey;
 
   .trial__form {
@@ -92,7 +94,11 @@ $lightgrey: #D9D9D9;
 
 
 .trial {
-  margin: 8rem 2rem;
+  @include pageTopBtmMargin();
+  @include pageSidePadding();
+  box-sizing: border-box;
+
+  padding: 8rem 2rem;
   flex-grow: 1;
   display: flex;
   width: 100%;
