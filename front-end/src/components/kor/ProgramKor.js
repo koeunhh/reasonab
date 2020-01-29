@@ -20,7 +20,7 @@ class ProgramKor extends Component {
 
     // axios.get('http://localhost:8080/content/program')
     
-    axios.get('https://rda-toronto.herokuapp.com/program')
+    axios.get('https://rda-toronto.herokuapp.com/content/program')
     .then(res => {
         this.setState({program: res.data});
       })

@@ -5,10 +5,6 @@ import '../../styles/menu.scss';
 
 export default class MenuKor extends Component {
 
-  componentDidUpdate(){
-    console.log('close');
-  }
-
   render(){
     const { menuOpen, clickMenu } = this.props;
 

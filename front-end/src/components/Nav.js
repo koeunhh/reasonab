@@ -15,7 +15,7 @@ class Nav extends Component{
       }
   }
 
-  componentDidMount(){
+  componentWillMount(){
     this.setCurrentLanguage();
   }
 

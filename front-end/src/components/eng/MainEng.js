@@ -17,7 +17,7 @@ export default class MainEng extends Component {
   }
 
   toAbout = () => {
-    this.props.history.push('/en/main__about');
+    this.props.history.push('/en/about');
   }
 
   toProgram = () => {
@@ -57,7 +57,7 @@ export default class MainEng extends Component {
     return(
       <div className='main' lang='en'>
         <div className='main__logo'>
-          <img src='/assets/icons/mainlogo-black.svg' alt='logo'/>
+          <img src='/assets/icons/mainlogo-white.svg' alt='logo'/>
         </div>
         <div className='main__about'>
           <img className='main__about--img' src='/assets/images/mainImg1.svg' alt='mainImg1'/>

@@ -17,15 +17,15 @@ export default class MainKor extends Component {
   }
 
   toAbout = () => {
-    this.props.history.push('/en/main__about');
+    this.props.history.push('/kor/about');
   }
 
   toProgram = () => {
-    this.props.history.push('/en/program');
+    this.props.history.push('/kor/program');
   }
 
   toTrial = () => {
-    this.props.history.push('/en/trial');
+    this.props.history.push('/kor/trial');
   }
 
   getData = () => {
