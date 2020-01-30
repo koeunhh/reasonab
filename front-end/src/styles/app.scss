@@ -17,6 +17,11 @@ html {
       display: flex;
       flex-direction: column;
       align-items: center;
+
+      //if inner element is too big for it's container
+      //the overflowing parts will be hidden
+      //this prevents gap on the right in mobile
+      overflow: hidden;
     }
 
     footer {

@@ -1,11 +1,11 @@
 @import './global.scss';
 
 .nav {
-  @include pageSidePadding();
+  @include navSidePadding();
 
   background-color: black;
   color: white;
-  // opacity: 0.9;
+  opacity: 0.85;
 
   box-sizing: border-box;
   height: 44px;
