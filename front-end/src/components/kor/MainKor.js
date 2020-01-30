@@ -39,7 +39,7 @@ export default class MainKor extends Component {
     const lang = this.props.checkLanguage();
 
     // axios.get('http://localhost:8080/content/questions')
-    axios.get('https://rda-toronto.herokuapp.com/content/main/questions')
+    axios.get('https://rda-toronto.herokuapp.com/content/questions')
       .then(res => {
         this.setState({qa: res.data[lang]});
       })
