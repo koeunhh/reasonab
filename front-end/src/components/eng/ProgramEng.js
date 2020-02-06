@@ -17,11 +17,15 @@ class ProgramEng extends Component {
     window.scrollTo(0, 0);
     this.props.whiteBackground();
     this.props.changeFooterColor();
-   
+    this.getPrograms();
+  }
+
+  getPrograms = () => {
+    const lang = this.props.checkLanguage();
     // axios.get('http://localhost:8080/content/program')
     axios.get('https://rda-toronto.herokuapp.com/content/program')
     .then(res => {
-        this.setState({program: res.data});
+        this.setState({program: res.data[lang]});
       })
       .catch(err => {
         console.log(err);

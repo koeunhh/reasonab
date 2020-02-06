@@ -114,8 +114,8 @@ export default class App extends Component {
               <Route exact path='/kor/' render={props => {return <MainKor {...props} checkLanguage={this.checkLanguage} whiteBackground={this.whiteBackground}/>}}/>
               <Route path='/en/about' render={props => {return <AboutEng {...props} changeFooterColor={this.changeFooterColor} whiteBackground={this.whiteBackground}/>}} />
               <Route path='/kor/about' render={props => {return <AboutKor {...props} changeFooterColor={this.changeFooterColor} whiteBackground={this.whiteBackground}/>}} />
-              <Route exact path='/en/program' render={props => {return <ProgramEng {...props} changeFooterColor={this.changeFooterColor} whiteBackground={this.whiteBackground}/>}} />
-              <Route exact path='/kor/program' render={props => {return <ProgramKor {...props} changeFooterColor={this.changeFooterColor} whiteBackground={this.whiteBackground}/>}} />
+              <Route exact path='/en/program' render={props => {return <ProgramEng {...props} checkLanguage={this.checkLanguage} changeFooterColor={this.changeFooterColor} whiteBackground={this.whiteBackground}/>}} />
+              <Route exact path='/kor/program' render={props => {return <ProgramKor {...props} checkLanguage={this.checkLanguage} changeFooterColor={this.changeFooterColor} whiteBackground={this.whiteBackground}/>}} />
               <Route path='/en/program/graphicDesign' render={props => {return <ProgramDetailEng {...props} changeFooterColor={this.changeFooterColor} whiteBackground={this.whiteBackground}/>}} />
               <Route path='/en/program/animation' render={props => {return <ProgramDetailEng {...props} changeFooterColor={this.changeFooterColor} whiteBackground={this.whiteBackground}/>}} />
               <Route exact path='/en/trial' render={props => {return <TrialEng {...props} changeFooterColor={this.changeFooterColor} blackBackground={this.blackBackground} whiteBackground={this.whiteBackground}/>}} />
