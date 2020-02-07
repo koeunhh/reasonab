@@ -46,10 +46,15 @@ class ProgramEng extends Component {
         {program.map(each => 
           <div className='program__each' id={each.oddEven} key={each.id}>
             <h1 className='program__each--title'>{each.title}</h1>
-            <h4 className='program__each--subtitle'>{each.subtitle}</h4>
+            <h3 className='program__each--subtitle'>{each.subtitle}</h3>
             {
-              each.items.map(item => 
-                <h5 className='program__each--items' key={each.items.indexOf(item)}>{item}</h5>
+              each.itemsMobile.map(item => 
+                <p className='program__each--items' id='programItemsMobile' key={each.itemsMobile.indexOf(item)}>{item}</p>
+              )
+            }
+            {
+              each.itemsDesktop.map(item => 
+                <p className='program__each--items' id='programItemsDesktop' key={each.itemsDesktop.indexOf(item)}>{item}</p>
               )
             }
             <button id={each.id} onClick={this.toProgram}>자세히 보기</button>
@@ -61,4 +66,4 @@ class ProgramEng extends Component {
   }
 }
 
-export default withRouter(ProgramEng);
+export default withRouter(ProgramEng); 

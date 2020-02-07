@@ -22,33 +22,40 @@ html {
       //the overflowing parts will be hidden
       //this prevents gap on the right in mobile
       overflow: hidden;
+
+      &__topWhiteSpace {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 44px;
+        background-color: black;
+      }
     }
 
-    footer {
+    .footer {
       width: 100%;
-      text-align: left;
-      border-top: 1px solid black;
-      margin-left: 4rem;
-      margin-right: 4rem;
-      padding: 15px 5px 0;
-  
-      @media (min-width: $tablet) {
-        margin-left: 6rem;
-        margin-right: 6rem;
-        padding: 25px 8px 0;
-      }
 
-      h5 {
-        margin: 0 0 8px;
-        font-weight: bold;
-
+      footer {
+        text-align: left;
+        border-top: 1px solid black;
+        margin-left: 2rem;
+        margin-right: 2rem;
+        margin-bottom: 4rem;
+        padding: 15px 10px 0;
+    
         @media (min-width: $tablet) {
-          margin-bottom: 12px;
+          padding: 20px 20px 0;
         }
   
-        &.credit {
-          color: #9A9A9A;
-          font-weight: normal;
+        h5 {
+          margin: 0 0 5px;
+          font-weight: bold;
+    
+          &.credit {
+            color: #9A9A9A;
+            font-weight: normal;
+          }
         }
       }
     }

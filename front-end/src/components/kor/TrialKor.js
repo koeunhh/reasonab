@@ -180,7 +180,6 @@ class TrialKor extends Component{
 
     return(
       <div className='trial' id='trialBlack' ref='trial'>
-        <div className='trial__nav'></div>
         <div className='trial__intro'>
           <h1 className='trial__intro--title'>무료 피드백 체험</h1>
           <h4 className='trial__intro--description'>

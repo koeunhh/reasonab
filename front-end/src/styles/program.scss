@@ -29,50 +29,35 @@ $grey: #6F6F6F;
       }
     }
 
-    &--title {
-      font-size: 32px;
-      @media (min-width: $tablet) {
-        font-size: 44px;
-      }
-      @media (min-width: $desktop) {
-        font-size: 60px;
-      }
-    }
-
     &--subtitle {
       font-weight: bold;
-      font-size: 16px;
       margin: 5px 0 10px;
       text-align: center;
-
-      @media (min-width: $tablet) {
-        font-size: 20px;
-      }
-      @media (min-width: $desktop) {
-        font-size: 28px;
-      }
     }
 
     &--items {
       color: #6F6F6F;
       margin: 0;
-      width: 240px;
       text-align: center;
 
-      @media (min-width: $tablet) {
-        font-size: 14px;
-        width: 400px;
+      &#programItemsDesktop {
+        display: none;
+        @media (min-width: $tablet) {
+          display: block;
+        }
       }
-      @media (min-width: $desktop) {
-        font-size: 16px;
-        width: 500px;
+
+      &#programItemsMobile {
+        @media (min-width: $tablet) {
+          display: none;
+        }
       }
     }
 
     button {
-      width: 110px;
-      height: 35px;
-      margin: 15px 0 0;
+      width: 150px;
+      height: 40px;
+      margin: 15px 0 10px;
     }
 
     img {

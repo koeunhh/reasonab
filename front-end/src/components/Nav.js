@@ -83,13 +83,13 @@ class Nav extends Component{
     }
 
     return(      
-      <nav className='nav' ref='nav'>
+      <nav className='nav'>
         <img className='nav__menu' onClick={clickMenu} src={menuImg} alt='menu'/>
         <img className='nav__logo' onClick={this.goHome} src='/assets/icons/logo-white.svg' alt='logo'/>
-        <Link to={aboutPath}>{about}</Link>
-        <Link to={programPath}>{program}</Link>
-        <Link to={trialPath}>{trial}</Link>
-        <h4 className='nav__mobileLang' onClick={this.switchLanguage}>{mobileLang}</h4>
+        <Link to={aboutPath} className='navText'>{about}</Link>
+        <Link to={programPath} className='navText'>{program}</Link>
+        <Link to={trialPath} className='navText'>{trial}</Link>
+        <h5 className='nav__mobileLang navText' onClick={this.switchLanguage}>{mobileLang}</h5>
         <button className='nav__lang' onClick={this.switchLanguage}>{language}</button>
       </nav>
     )

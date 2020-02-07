@@ -58,7 +58,6 @@ export default class MainEng extends Component {
 
     return(
       <div className='main'>
-        <div className='main__nav'></div>
         <div className='main__logo'>
           <img src='/assets/icons/mainlogo-white.svg' alt='logo'/>
         </div>
@@ -78,13 +77,13 @@ export default class MainEng extends Component {
         </div>
         <div className='main__qa'>
           <div className='main__qa--title'>
-            <h2>{qa.title}</h2>
+            <h3>{qa.title}</h3>
             <img src='/assets/images/mainImg5.svg' alt='questionAnswer'/>
           </div>
           <div className='main__qa--questions'>
             {qa.questions.map(each => 
               <div className='qa-each' id={`q${each.id}`} key={each.id}>
-                <h3>{`${each.id}. ${each.question}`}</h3>
+                <h4>{`${each.id}. ${each.question}`}</h4>
                 <p>{each.answer}</p>
               </div>
             )}

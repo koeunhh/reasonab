@@ -8,11 +8,10 @@ $desktop: 1024px;
 @mixin button {
   background-color: white;
   color: black;
-  height: 35px;
-  width: 110px;
   border-radius: 20px;
   border: 2px solid black;
   align-self: center;
+  font-size: 16px;
   font-weight: bold;
   cursor: pointer;
 
@@ -71,16 +70,74 @@ button {
 h1 {
   margin: 0;
   font-size: 32px;
+
+  @media (min-width: $tablet) {
+    font-size: 44px;
+  }
+  @media (min-width: $desktop) {
+    font-size: 56px;
+  }
 }
 
 h2 {
-  font-size: 22px;
-  
+  font-size: 24px;
+  line-height: 30px;
+
   @media (min-width: $tablet) {
-    font-size: 26px;
+    font-size: 30px;
+    line-height: 38px;
   }
   @media (min-width: $desktop) {
-    font-size: 27px;
+    font-size: 36px;
+    line-height: 44px;
+  }
+}
+
+h3 {
+  font-size: 19px;
+
+  @media (min-width: $tablet) {
+    font-size: 24px
+  }
+  @media (min-width: $desktop) {
+    font-size: 28px;
+  }
+}
+
+h4 {
+  font-size: 15px;
+
+  @media (min-width: $tablet) {
+    font-size: 18px;
+  }
+  @media (min-width: $desktop) {
+    font-size: 22px;
+  }
+}
+
+h5 {
+  font-size: 10px;
+  font-weight: normal;
+
+  @media (min-width: $tablet) {
+    font-size: 12px;
+  }
+  @media (min-width: $desktop) {
+    font-size: 14px;
+  }
+}
+
+p {
+  font-size: 14px;
+  line-height: 24px;
+
+  @media (min-width: $tablet) {
+    font-size: 17px;
+    line-height: 28px;
+  }
+  @media (min-width: $desktop) {
+    font-size: 19px;
+    line-height: 33px;
   }
 }
 
@@ -89,22 +146,7 @@ label {
   font-size: 16px;
 }
 
-h3 {
-  font-size: 18px;
-}
-
-h4 {
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 20px;
-}
-
-h5 {
-  font-size: 10px;
-  font-weight: normal;
-}
-
-p {
+.navText {
   font-size: 16px;
-  line-height: 24px;;
+  font-weight: normal;
 }

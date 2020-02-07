@@ -37,15 +37,16 @@ export default class App extends Component {
 
   changeFooterColor = () => {
     const content = this.state.backgroundColor;
+    let footerContainer = document.querySelector('.footer').style;
     let footer = document.querySelector('footer').style;
     let copyright = document.querySelector('.copyright').style;
     if (content === 'blackBackground'){
-      footer.backgroundColor = 'black';
+      footerContainer.backgroundColor = 'black';
       footer.borderColor = '#9A9A9A';
       copyright.color = 'white';
     }
     else if (content === 'whiteBackground'){
-      footer.backgroundColor = 'white';
+      footerContainer.backgroundColor = 'white';
       footer.borderColor = '#797979';
       copyright.color = 'black';    
     }
@@ -109,6 +110,7 @@ export default class App extends Component {
                                                     clickMenu={this.clickMenu}
                                                     checkLanguage={this.checkLanguage}/>}}/>
           <div className='content' id={this.state.backgroundColor}>
+            <div className='content__topWhiteSpace'></div>
             <Switch>
               <Route exact path='/en/' render={props => {return <MainEng {...props} checkLanguage={this.checkLanguage} whiteBackground={this.whiteBackground}/>}}/>
               <Route exact path='/kor/' render={props => {return <MainKor {...props} checkLanguage={this.checkLanguage} whiteBackground={this.whiteBackground}/>}}/>
@@ -124,11 +126,14 @@ export default class App extends Component {
               <Route path='/kor/trial/formSubmitted' render={props => {return <TrialSubmissionKor {...props} whiteBackground={this.whiteBackground}/>}}/>
               <Redirect exact from='/' to='/kor/'/>
             </Switch>
-            <footer>
-              <h5 className='copyright'>Copyright © 2019 RDA All rights reserved.</h5>
-              <h5 className='credit'>Code by Koeun Lee</h5>
-              <h5 className='credit'>Design by Luke Jung</h5>
-            </footer>
+            <div className='footer'>
+              <footer>
+                <h5 className='copyright'>Copyright © 2019 RDA All rights reserved.</h5>
+                <h5 className='credit'>Code by Koeun Lee</h5>
+                <h5 className='credit'>Design by Luke Jung</h5>
+                <h5 className='credit'>Illustration by Katerina Limpitsouni_ unDraw @unDraw_co</h5>
+              </footer>
+            </div>
           </div>
         </div>
       </Router>
